@@ -1,0 +1,84 @@
+.garderner-profile-container {
+    width: 100%;
+    height: 450px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:green;
+    margin-top: 80px;
+}
+.profile-pict-container {
+    background-color:red;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 50%;
+    padding: 0 20px;
+}
+.profile-pict {
+    position:absolute;
+    z-index:1;
+    bottom: 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 400px;
+}
+.main-content {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width: 50%;
+    position:relative;
+    color:white;
+    padding:0 30px;
+    font-size: 30px;
+
+}
+.main-content .h-line {
+    width: 80%;
+    background-color:white;
+}
+/* START OF GARDENER PROFILE STYLES */
+.main-content .name { 
+    font-size: 60px;
+}
+.main-content .detail { 
+    display:flex;
+    width:100%;
+    justify-content:space-evenly;
+    align-items:center;
+}
+.main-content .detail .left ,.main-content .detail .right {
+    text-align:center;
+    font-family: sans-serif;
+    margin: 20px 0;
+}
+.main-content .detail .left .top , .main-content .detail .right .top{
+    font-weight: bold;
+}
+/* END OF GARDENER PROFILE STYLES */
+.main-content .btn {
+    margin-top: 20px;
+    background-color:orange;
+    padding: 10px 20px;
+    color:white;
+}
+.main-content .btn:hover {
+    background-color:brown;
+}
+
+.portfolio-wrapper {
+    flex: 1 0 45%;
+    margin: 20px;
+    overflow:hidden;
+    border-radius: 40px;
+}
+.portfolio-wrapper img {
+    width:100%;
+    height: 350px;
+    object-fit: cover;
+}
+
