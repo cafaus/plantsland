@@ -13,11 +13,11 @@
     </div>
 </div>
 
-<div class="container pt-4 pb-5">
+<div class="custom-container pt-4 pb-5">
     <div class="title">Top Sales Plants</div>
     <div class="d-flex flex-wrap justify-content-center">
         @for ($i = 0; $i < 10; $i++)
-            <a href="{{ "#" }}" class="plant-card m-2">
+            <a href="{{ "#" }}" class="plant-card shadow m-2">
                 <img src="{{ asset('images/plant.jpg') }}" alt="plant">
                 <div class="plant-content"> 
                     <div class="name line-clamp-2">Bonsai Ficus Ficus Ficus Ficus Ficus Ficus Ficus Ficus</div>

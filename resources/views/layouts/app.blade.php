@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     @yield('styles')
+    @yield('extended-styles')
 </head>
 <body>
     <div id="app">
@@ -44,10 +45,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-3"> 
-                            <a class="nav-link" href="#">Gardener</a>
+                            <a class="nav-link" href="/gardener">Gardener</a>
                         </li>
                         <li class="nav-item mr-3">
-                            <a class="nav-link" href="#">Store</a>
+                            <a class="nav-link" href="/store">Store</a>
                         </li>
                         <li class="nav-item mr-3">
                             <a class="nav-link" href="#">Forum</a>

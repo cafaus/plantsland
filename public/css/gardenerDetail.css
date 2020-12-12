@@ -41,6 +41,7 @@
     width: 80%;
     background-color:white;
 }
+/* START OF GARDENER PROFILE STYLES */
 .main-content .name { 
     font-size: 60px;
 }
@@ -58,7 +59,7 @@
 .main-content .detail .left .top , .main-content .detail .right .top{
     font-weight: bold;
 }
-
+/* END OF GARDENER PROFILE STYLES */
 .main-content .btn {
     margin-top: 20px;
     background-color:orange;

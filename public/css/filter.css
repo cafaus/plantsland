@@ -1,0 +1,74 @@
+.content-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+.filter-title, .select-input-container {
+    min-height: 45px;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: flex-end;
+}
+.select-input-container .custom-select{
+    min-width: 200px;
+}
+
+.left{
+    margin-right: 20px;
+    width: 30%;
+}
+.sub-title {
+    font-family: sans-serif;
+}
+
+.filter-section {
+    margin: 10px 20px;
+}
+.filter-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 10px;
+    min-height: 500px;
+}
+.filter-box .f-title{
+    font-size: 20px;
+    font-weight:500;
+    font-family: sans-serif;
+    color: black;
+}
+.checkbox-container {
+    display: flex;
+    flex-direction: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.checkbox-container:first-child {
+    margin: 0;
+}
+.checkbox-container .text {
+    margin: 0 5px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: sans-serif;
+}
+
+
+.right {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.select-input-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.custom-select {
+    width: fit-content;
+    border-radius: 0;
+}

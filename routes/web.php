@@ -14,7 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('gardernerDetail');
+    return view('welcome');
+});
+Route::get('/gardener', function () {
+    return view('gardenerList');
+});
+Route::get('/store', function () {
+    return view('storeList');
+});
+
+Route::get('/gardener/detail', function () {
+    return view('gardenerDetail');
 });
 
 Auth::routes();

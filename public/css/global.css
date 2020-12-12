@@ -3,16 +3,23 @@ html, body {
     color: #636b6f;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
-    min-height: 100%;
+    min-height: 100vh;
     height: 100%;
     margin: 0;
 }
-
 .navbar {
     padding: 0;
 }
 .nav-container {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin: 0;
+}
+.custom-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: space-between;
     padding: 0 20px;
@@ -141,9 +148,6 @@ html, body {
     overflow: hidden;
     background-color:white;
     
-    -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.6);
-    -moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.6);
-    box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.6);
     transition: all .2s; 
 
     text-decoration:none;
@@ -186,7 +190,7 @@ html, body {
     color: black;
     font-style: italic;
     overflow: hidden;
-    margin: 10px 0;
+    padding: 10px 0;
 }
 .plant-card .detail {
     display: flex;
@@ -212,3 +216,32 @@ html, body {
 }
 
 /* END OF PLANT CARD STYLES */
+
+/* START OF BREADCRUMB STYLES */
+.custom-breadcrumb { 
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    align-items: center;
+}
+.custom-breadcrumb .separator {
+    color:grey;
+}
+.custom-breadcrumb-item { 
+    display: flex;
+    padding: 10px 16px;
+    color: grey;
+    text-decoration: none;
+    cursor: pointer;
+}
+.custom-breadcrumb-item:hover, 
+.custom-breadcrumb-item:visited, 
+.custom-breadcrumb-item:link, 
+.custom-breadcrumb-item:active {
+    text-decoration:none;
+    color:inherit;
+}
+.custom-breadcrumb-item:last-child{
+    color:black;
+}
+/* END OF BREADCRUMB STYLES */
