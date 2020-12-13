@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+
 use Carbon\Carbon;
 
 class CompetenceSeeder extends Seeder
