@@ -86,7 +86,12 @@ html, body {
     color: black;
     text-transform: capitalize;
     font-weight: 600;
-    margin-bottom: 30px;
+}
+.sm-title {
+    font-family: sans-serif;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 500;
 }
 
 .search-bar {
@@ -148,7 +153,9 @@ html, body {
 .plant-card{ 
     display:flex;
     flex-direction: column;
-    
+
+    min-width: 250px;
+    min-height: 450px;
     width: 250px;
     height: 450px;
     border-radius: 20px;
@@ -268,3 +275,11 @@ html, body {
     color:white;
 }
 /* END OF BUTTON STYLES */
+
+/* START OF BLANK FOOTER */
+.blank-footer {
+    height: 300px;
+    width: 100%;
+    background-color: green;
+}
+/* END OF BLANK FOOTER */

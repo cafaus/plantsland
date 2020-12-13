@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    @yield('breadcrumb')
     <div class="custom-container pb-5">
         <div class="content-wrapper">
             <div class="left">

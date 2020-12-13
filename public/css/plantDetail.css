@@ -114,13 +114,13 @@ input[type=number] {
     background-color: grey;
 }
 
-.image-list-scroller {
+.h-scroller {
     display: flex;
     overflow-x: scroll;
     margin: 10px 0;
     padding: 10px 0;
 }
-.image-list-scroller::-webkit-scrollbar {    
+.h-scroller::-webkit-scrollbar {    
     display: none;
 }
 
@@ -147,4 +147,61 @@ input[type=number] {
     width: 100%;
     height: 100%;
     object-fit:cover;
+}
+
+.care-list-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.care-list-container .img-container {
+    width: 50%;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.care-list-container .list-container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    min-height: 250px;
+    height: 100%;
+    padding: 0 20px;
+    justify-content: space-evenly;
+}
+.care-list-container .list-container .list-item {
+    display: flex;
+    align-items: center;
+}
+.care-list-container .list-container .list-item .list-icon{
+    height: 20px;
+    width: 20px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.care-list-container .list-container .list-item .list-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.care-list-container .list-container .list-item .list-text{
+    font-size: 15px;
+    line-height: 15px;
+    color: black;
+}
+
+.procedures {
+    padding: 10px 10px 40px 10px;
+}
+.procedures .procedure-container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+.procedure-container .care-desc {
+    margin-top: 5px;
 }

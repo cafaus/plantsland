@@ -38,7 +38,7 @@
 </div>
 
 <div class="custom-container pt-4 pb-5">
-    <div class="title">Portfolio</div>
+    <div class="title mb-3">Portfolio</div>
     <div class="d-flex flex-wrap justify-content-center"> 
         <div class="portfolio-wrapper"> <img class="portfolio" src="{{asset('images/placeholder.jpg')}}" alt="portfolio"></div>
         <div class="portfolio-wrapper"> <img class="portfolio" src="{{asset('images/placeholder.jpg')}}" alt="portfolio"></div>
