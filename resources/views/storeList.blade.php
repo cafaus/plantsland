@@ -5,14 +5,21 @@
 @endsection
 
 @section('breadcrumb')
-<?php $links = ['Home', 'Store']; ?>
 <div class="custom-breadcrumb">
-    @for ($i = 0; $i < count($links); $i++)
-        <a href="#" class="custom-breadcrumb-item">{{ $links[$i] }}</a>
-        @if ($i < count($links)-1)
-            <div class="fa fa-angle-right separator"></div>
-        @endif
-    @endfor
+    <?php 
+        $i = 0;
+        $links = Request::segments();
+        array_unshift($links, 'Home');
+    ?>
+    @if (count($links) > 1)
+        @foreach($links as $segment)
+            <a href="{{ $segment }}" class="custom-breadcrumb-item">{{$segment}}</a>
+            @if ($i < count($links) - 1)
+                <div class="fa fa-angle-right separator"></div>
+            @endif  
+            <?php $i++ ?>
+        @endforeach
+    @endif
 </div>
 @endsection
 
@@ -39,7 +46,7 @@
 @section('filter-content')
 <div class="d-flex flex-wrap justify-content-center">
     @for ($i = 0; $i < 10; $i++)
-        <a href="{{ "#" }}" class="plant-card shadow m-2">
+        <a href="/store/plantname" class="plant-card shadow m-2">
             <img src="{{ asset('images/plant.jpg') }}" alt="plant">
             <div class="plant-content"> 
                 <div class="name line-clamp-2">Bonsai Ficus Ficus Ficus Ficus Ficus Ficus Ficus Ficus</div>

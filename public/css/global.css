@@ -10,6 +10,7 @@ html, body {
 .navbar {
     padding: 0;
 }
+
 .nav-container {
     display: flex;
     width: 100%;
@@ -58,6 +59,12 @@ html, body {
     min-width: 20px;
     background-color: grey;
 }
+.h-line-grey {
+    height: 2px;
+    width: 100%;
+    min-width: 20px;
+    background-color: lightgray;
+}
 
 .line-clamp-1{
     display: -webkit-box;
@@ -79,7 +86,12 @@ html, body {
     color: black;
     text-transform: capitalize;
     font-weight: 600;
-    margin-bottom: 30px;
+}
+.sm-title {
+    font-family: sans-serif;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 500;
 }
 
 .search-bar {
@@ -141,7 +153,9 @@ html, body {
 .plant-card{ 
     display:flex;
     flex-direction: column;
-    
+
+    min-width: 250px;
+    min-height: 450px;
     width: 250px;
     height: 450px;
     border-radius: 20px;
@@ -233,6 +247,7 @@ html, body {
     color: grey;
     text-decoration: none;
     cursor: pointer;
+    text-transform: capitalize;
 }
 .custom-breadcrumb-item:hover, 
 .custom-breadcrumb-item:visited, 
@@ -245,3 +260,26 @@ html, body {
     color:black;
 }
 /* END OF BREADCRUMB STYLES */
+
+/* START OF BUTTON STYLES */
+.btn {
+    background-color:orange;
+    padding: 10px 20px;
+    color:white;
+    font-family: sans-serif;
+    font-weight: bold;
+    border-radius: 10px;;
+}
+.btn:hover {
+    background-color:rgb(241, 68, 0);
+    color:white;
+}
+/* END OF BUTTON STYLES */
+
+/* START OF BLANK FOOTER */
+.blank-footer {
+    height: 300px;
+    width: 100%;
+    background-color: green;
+}
+/* END OF BLANK FOOTER */

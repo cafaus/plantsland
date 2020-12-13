@@ -5,14 +5,22 @@
 @endsection
 
 @section('breadcrumb')
-<?php $links = ['Home', 'Gardener']; ?>
+<?php $segments = ''; ?>
 <div class="custom-breadcrumb">
-    @for ($i = 0; $i < count($links); $i++)
-        <a href="#" class="custom-breadcrumb-item">{{ $links[$i] }}</a>
-        @if ($i < count($links)-1)
-            <div class="fa fa-angle-right separator"></div>
-        @endif
-    @endfor
+    <?php 
+        $i = 0;
+        $links = Request::segments();
+        array_unshift($links, 'Home');
+    ?>
+    @if (count($links) > 1)
+        @foreach($links as $segment)
+            <a href="{{ $segment }}" class="custom-breadcrumb-item">{{$segment}}</a>
+            @if ($i < count($links) - 1)
+                <div class="fa fa-angle-right separator"></div>
+            @endif  
+            <?php $i++ ?>
+        @endforeach
+    @endif
 </div>
 @endsection
 
@@ -38,7 +46,7 @@
 
 @section('filter-content')
 @for ($i = 0; $i < 5; $i++)
-<div class="gardener-card shadow">
+<a class="gardener-card shadow" href="/gardener/detail">
     <div class="pict-container">
         <img src="{{ asset('images/people.png') }}" alt="portfolio">
     </div>
@@ -60,6 +68,6 @@
     <div class="portfolio-container">
         <img src="{{ asset('images/placeholder.jpg') }}" alt="portfolio">
     </div>
-</div>
+</a>
 @endfor
 @endsection

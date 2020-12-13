@@ -60,16 +60,6 @@
     font-weight: bold;
 }
 /* END OF GARDENER PROFILE STYLES */
-.main-content .btn {
-    margin-top: 20px;
-    background-color:orange;
-    padding: 10px 20px;
-    color:white;
-}
-.main-content .btn:hover {
-    background-color:brown;
-}
-
 .portfolio-wrapper {
     flex: 1 0 45%;
     margin: 20px;

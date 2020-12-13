@@ -7,6 +7,16 @@
     padding: 20px;
     justify-content: space-between;
     margin: 15px 0;
+    cursor: pointer;
+    color:inherit;
+    transition: transform .1s ease-out;
+}
+.gardener-card:hover {
+    transform: scale(1.03);
+}
+.gardener-card:hover, .gardener-card:visited, .gardener-card:link, .gardener-card:active {
+    color: inherit;
+    text-decoration: none;
 }
 .gardener-card .pict-container {
     height: 200px;
