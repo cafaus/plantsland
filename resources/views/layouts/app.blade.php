@@ -93,11 +93,12 @@
                 </div>
             </div>
         </nav>
-
+        @yield('breadcrumb')
         @yield('content')
     </div>
     <script>
-        window.onload = function () {
+        window.addEventListener('load', searchAnimation);
+        function searchAnimation () {
             const searchIcon = document.getElementById('search-icon');
             const searchInput = document.getElementsByClassName('search-input')[0];
 
@@ -114,5 +115,7 @@
             }
         }
     </script>
+    @yield('script')
+
 </body>
 </html>

@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="price">Rp {{ number_format( 9999999 , 0, ".", ".") }}/Day</div>
-        <div class="btn">Make Appointment</div>
+        <div class="btn mt-2">Make Appointment</div>
     </div>
 </div>
 

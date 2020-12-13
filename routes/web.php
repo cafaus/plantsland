@@ -22,6 +22,9 @@ Route::get('/gardener', function () {
 Route::get('/store', function () {
     return view('storeList');
 });
+Route::get('/store/plantname', function () {
+    return view('plantDetail');
+});
 
 Route::get('/gardener/detail', function () {
     return view('gardenerDetail');
