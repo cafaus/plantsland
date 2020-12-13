@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-
-class PlantCatagoriesSeeder extends Seeder
+class PlantCatagorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
