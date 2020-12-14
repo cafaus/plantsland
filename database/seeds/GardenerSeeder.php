@@ -15,7 +15,7 @@ class GardenerSeeder extends Seeder
             [
                 'competence_id' => 1,
                 'name' => 'Ujo Sutejo',
-                'image' => 'images/gardener/ujo-sutejo.jpeg',
+                'image' => 'images/gardeners/ujo-sutejo.jpeg',
                 'likes' => 95,
                 'experience' => 20,
                 'price_per_day' => 500000,
