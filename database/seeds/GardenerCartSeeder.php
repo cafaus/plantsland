@@ -15,7 +15,7 @@ class GardenerCartSeeder extends Seeder
             [
                 'user_id' => 1,
                 'gardener_id' => 1, 
-                'quantity' => 10,
+                'rent_days' => 10,
                 
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
