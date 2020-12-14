@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PlantSeeder::class);
         $this->call(PlantCareSeeder::class);
         $this->call(PlantCartSeeder::class);
+        $this->call(GardenerSeeder::class);
     }
 }
