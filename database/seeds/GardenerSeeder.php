@@ -14,7 +14,7 @@ class GardenerSeeder extends Seeder
         DB::table('gardeners')->insert([
             [
                 'competence_id' => 1,
-                'name' => 'location',
+                'name' => 'Ujo Sutejo',
                 'image' => 'images/gardener/ujo-sutejo.jpeg',
                 'likes' => 95,
                 'experience' => 20,
