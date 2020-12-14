@@ -17,7 +17,7 @@ class CreateGardenerCartsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('gardener_id');
-            $table->integer('quantity');
+            $table->integer('rent_days');
             $table->timestamps();
 
             $table->index('user_id');
