@@ -45,29 +45,29 @@
 @endsection
 
 @section('filter-content')
-@for ($i = 0; $i < 5; $i++)
+@foreach ($gardeners as $gardener)
 <a class="gardener-card shadow" href="/gardener/detail">
     <div class="pict-container">
-        <img src="{{ asset('images/people.png') }}" alt="portfolio">
+        <img src="{{ asset($gardener->image) }}" alt="portfolio">
     </div>
     <div class="detail-container">
-        <div class="name line-clamp-1">Kim Jisoo</div>
+        <div class="name line-clamp-1">{{$gardener->name}}</div>
         <div class="h-line"></div>
         <div class="detail">
             <div class="left">
-                <div class="top">100%</div>
+                <div class="top">{{$gardener->likes}}%</div>
                 <div class="bottom">Likes</div>
             </div>
             <div class="right">
-                <div class="top">20 Years</div>
+                <div class="top">{{$gardener->experience}} Years</div>
                 <div class="bottom">Experience</div>
             </div>
         </div>
-        <div class="price">Rp {{ number_format( 9999999 , 0, ".", ".") }}/Day</div>
+        <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
     </div>
     <div class="portfolio-container">
-        <img src="{{ asset('images/placeholder.jpg') }}" alt="portfolio">
+        <img src="{{ asset($gardener->gardenerPortofolios->find(1)->image) }}" alt="portfolio">
     </div>
 </a>
-@endfor
+@endforeach
 @endsection
