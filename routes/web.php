@@ -19,9 +19,7 @@ Route::get('/', function () {
 Route::get('/gardener', function () {
     return view('gardenerList');
 });
-Route::get('/store', function () {
-    return view('storeList');
-});
+Route::get('/store', "PlantsController@index");
 Route::get('/store/plantname', function () {
     return view('plantDetail');
 });
