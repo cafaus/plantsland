@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-class PlantCatagorySeeder extends Seeder
+class PlantCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class PlantCatagorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('plant_catagories')->insert([
+        DB::table('plant_categories')->insert([
             [
                 'name' => 'cactus',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

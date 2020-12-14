@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plant extends Model
 {
-    public function plantCatagory()
+    public function plantCategory()
     {
-        return $this->belongsTo(PlantCatagory::class);
+        return $this->belongsTo(PlantCategory::class);
     }
 
     public function plantOrigin()

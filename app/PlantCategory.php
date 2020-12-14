@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PlantCatagory extends Model
+class PlantCategory extends Model
 {
     public function plants()
     {
