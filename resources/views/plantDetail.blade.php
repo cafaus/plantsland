@@ -27,32 +27,32 @@
 <div class="custom-container">
     <div class="content-wrapper">
         <div class="img-container">
-            <img src="{{ asset('images/placeholder.jpg' )}}" alt="plantname">
+            <img src="{{ asset($plant->image)}}" alt="plantname">
         </div>
         <div class="plant-detail-container">
-            <div class="plant-name line-clamp-1">Sansievieria Cylindrica</div>
+            <div class="plant-name line-clamp-1">{{$plant->name}}</div>
             <div class="h-line"></div>
             <div class="plant-desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit itaque nihil veniam iure eum! Optio ex doloribus laboriosam dolor dolorem minima nesciunt blanditiis, commodi quisquam expedita maiores, natus aspernatur animi?
+                {{$plant->description}}
             </div>
             <div class="plant-detail">
                 <div class="plant-height">
                     <div class="detail-text">Height</div>
-                    <div class="detail-value">± 999 cm</div>
+                    <div class="detail-value">± {{$plant->height}} cm</div>
                 </div>
                 <div class="v-line"></div>
                 <div class="plant-pot">
                     <div class="detail-text line-clamp-1">Pot ∅</div>
-                    <div class="detail-value line-clamp-1">999 cm</div>
+                    <div class="detail-value line-clamp-1">{{$plant->pot_size}} cm</div>
                 </div>
                 <div class="v-line"></div>
                 <div class="plant-type">
                     <div class="detail-text">Type</div>
-                    <div class="detail-value">sesuatu</div>
+                    <div class="detail-value">{{$plant->plantCategory->name}}</div>
                 </div>
             </div>
             <div class="plant-footer">
-                <div class="price">Rp{{ number_format( 9999999 , 0, ".", ".") }}</div>
+                <div class="price">Rp{{ number_format( $plant->price , 0, ".", ".") }}</div>
                 <form class="add-cart-container">
                     <div class="qty-wrapper">
                         <div class="icon-container" id="minus">
@@ -69,21 +69,20 @@
         </div>
     </div>
 
-    <div class="h-scroller">
+    {{-- <div class="h-scroller">
         @for ($i = 0; $i < 25; $i++)
         <div class="sm-image-container">
             <img src="{{ asset('images/placeholder.jpg') }}" alt="image-name">
         </div>
         @endfor
-    </div>
+    </div> --}}
 
     <div class="h-line-grey"></div>
 
     <div class="origin-container"> 
         <div class="title">Origin</div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio tempore nemo voluptatibus recusandae iste. Ex itaque eveniet ab suscipit illum exercitationem! Rerum accusantium voluptatem illo ullam rem reprehenderit enim cupiditate?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio tempore nemo voluptatibus recusandae iste. Ex itaque eveniet ab suscipit illum exercitationem! Rerum accusantium voluptatem illo ullam rem reprehenderit enim cupiditate?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio tempore nemo voluptatibus recusandae iste. Ex itaque eveniet ab suscipit illum exercitationem! Rerum accusantium voluptatem illo ullam rem reprehenderit enim cupiditate?</p>
+        <p>{{$plant->plantOrigin->description}}</p>
+        
     </div>
 
     <div class="h-line-grey"></div>
@@ -96,49 +95,38 @@
         <div class="img-container">
             <img src="{{ asset('images/placeholder.jpg' )}}" alt="plantname">
         </div>
+        <?php 
+            $tipsSummary = [
+                'Need little water',
+                'Likes to be in shade',
+                'Strongly air purifying',
+                'No nutrition needed',
+                'Slightly toxic for animal',
+                'Change pot every three year',
+            ]
+        ?>
         <div class="list-container">
-            @for ($i = 0; $i < 6; $i++)
+            @foreach ($tipsSummary as $tip)
                 <div class="list-item">
                     <div class="list-icon">
                         <img src="{{ asset('images/leaf.png')}}" alt="list-icon">
                     </div>
                     <div class="list-text">
-                        Lorem, ipsum dolor sit amet consectetur
+                        {{$tip}}
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 
     <?php
-        $cares = [
-            [
-                'title' => 'Temperature',
-                'desc' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut?'
-            ],
-            [
-                'title' => 'Watering',
-                'desc' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut?'
-            ],
-            [
-                'title' => 'Prunning',
-                'desc' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut?'
-            ],
-            [
-                'title' => 'Repotting',
-                'desc' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, reprehenderit atque nesciunt exercitationem quas! Porro ullam omnis deserunt quae ut? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda, '
-            ],
-            [
-                'title' => 'Nutrition',
-                'desc' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus esse eveniet iste debitis ipsa voluptatibus rem totam ex assumenda'
-            ],
-        ];
+        $cares = $plant->plantCares;
     ?>
     <div class="procedures">
         @foreach ($cares as $care )
             <div class="procedure-container">
-                <div class="sm-title">{{ $care['title'] }} </div>
-                <div class="care-desc">{{ $care['desc'] }} </div>
+                <div class="sm-title">{{ $care->care_title }} </div>
+                <div class="care-desc">{{ $care->description }} </div>
             </div>
         @endforeach
     </div>

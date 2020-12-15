@@ -45,27 +45,27 @@
 
 @section('filter-content')
 <div class="d-flex flex-wrap justify-content-center">
-    @for ($i = 0; $i < 10; $i++)
-        <a href="/store/plantname" class="plant-card shadow m-2">
-            <img src="{{ asset('images/plant.jpg') }}" alt="plant">
+    @foreach ($plants as $plant)
+        <a href="/store/{{$plant->id}}" class="plant-card shadow m-2">
+            <img src="{{ asset($plant->image) }}" alt="plant">
             <div class="plant-content"> 
-                <div class="name line-clamp-2">Bonsai Ficus Ficus Ficus Ficus Ficus Ficus Ficus Ficus</div>
+                <div class="name line-clamp-2">{{$plant->name}}</div>
                 <div class="h-line"></div>
                 <div class="detail">
                     <div class="detail-content">
                         <div class="sub-title line-clamp-1">Height</div>
-                        <div class="desc line-clamp-1">± 999 cm</div>
+                        <div class="desc line-clamp-1">± {{$plant->height}} cm</div>
                     </div>
                     <div class="v-line"></div>
                     <div class="detail-content">
                         <div class="sub-title line-clamp-1">Pot ∅</div>
-                        <div class="desc line-clamp-1">999 cm</div>
+                        <div class="desc line-clamp-1">{{$plant->pot_size}} cm</div>
                     </div>
                 </div>
                 <div class="h-line"></div>
-                <div class="price">Rp {{ number_format( 9999999 , 0, ".", ".") }}</div>
+                <div class="price">Rp {{ number_format( $plant->price , 0, ".", ".") }}</div>
             </div>
         </a>  
-    @endfor
+    @endforeach
 </div>
 @endsection

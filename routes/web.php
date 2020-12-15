@@ -16,19 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/gardener', function () {
-    return view('gardenerList');
-});
-Route::get('/store', function () {
-    return view('storeList');
-});
-Route::get('/store/plantname', function () {
-    return view('plantDetail');
-});
+Route::get('/gardener', "GardenersController@index");
+Route::get('/store', "PlantsController@index");
+Route::get('/store/{plant}', "PlantsController@show");
 
-Route::get('/gardener/detail', function () {
-    return view('gardenerDetail');
-});
+Route::get('/gardener/{gardener}', "GardenersController@show");
 
 Auth::routes();
 
