@@ -46,7 +46,7 @@
 
 @section('filter-content')
 @foreach ($gardeners as $gardener)
-<a class="gardener-card shadow" href="/gardener/detail">
+<a class="gardener-card shadow" href="/gardener/{{$gardener->id}}">
     <div class="pict-container">
         <img src="{{ asset($gardener->image) }}" alt="portfolio">
     </div>
