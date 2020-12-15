@@ -18,9 +18,7 @@ Route::get('/', function () {
 });
 Route::get('/gardener', "GardenersController@index");
 Route::get('/store', "PlantsController@index");
-Route::get('/store/plantname', function () {
-    return view('plantDetail');
-});
+Route::get('/store/{plant}', "PlantsController@show");
 
 Route::get('/gardener/detail', function () {
     return view('gardenerDetail');

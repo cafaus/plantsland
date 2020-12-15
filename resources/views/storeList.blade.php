@@ -46,7 +46,7 @@
 @section('filter-content')
 <div class="d-flex flex-wrap justify-content-center">
     @foreach ($plants as $plant)
-        <a href="/store/plantname" class="plant-card shadow m-2">
+        <a href="/store/{{$plant->id}}" class="plant-card shadow m-2">
             <img src="{{ asset($plant->image) }}" alt="plant">
             <div class="plant-content"> 
                 <div class="name line-clamp-2">{{$plant->name}}</div>

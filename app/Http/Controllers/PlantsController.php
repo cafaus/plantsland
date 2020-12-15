@@ -10,4 +10,8 @@ class PlantsController extends Controller
         $plants = \App\Plant::all();
         return view('storeList', compact('plants'));
     }
+
+    public function show(\App\Plant $plant){
+        return view('plantDetail', compact('plant'));
+    }
 }
