@@ -49,7 +49,8 @@ Route::post('/plantCart/{plant}', "PlantCartsController@store");
 Route::delete('/plantCart/{plantCart}', 'PlantCartsController@destroy');
 Route::patch('/plantCart/{plantCart}', 'PlantCartsController@update');
 
-Route::post('/gardenerCart/{gardener}', "GardenerCartsController@store");
+Route::post('/gardenerCart/{gardenerCart}', "GardenerCartsController@store");
+Route::delete('/gardenerCart/{gardenerCart}', 'GardenerCartsController@destroy');
 
 Route::get('/history', function() {
     return view('history');

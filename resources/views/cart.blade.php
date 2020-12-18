@@ -109,7 +109,9 @@
                     </button>
                 </form>
                 
-                <form action="#">
+                <form action="/gardenerCart/{{$gardenerCart->id}}" method="post">
+                    @csrf
+                    @method("DELETE")
                     <button class="cart-action-btn">
                         <i class="fa fa-trash-alt"></i>
                     </button>

@@ -11,8 +11,6 @@ class GardenerCartsController extends Controller
             'rentDays' => ['required', 'integer', 'min:1']
         ]);
         
-        
-        
         $existingCart = \App\GardenerCart::where('gardener_id', $gardener->id)->first();
         if($existingCart){
             $totalNeeded = $existingCart->rent_days + $data['rentDays'];
@@ -28,5 +26,10 @@ class GardenerCartsController extends Controller
         }
        
         return redirect()->back()->with('success', 'Added to cart!');
+    }
+
+    public function destroy(\App\GardenerCart $gardenerCart){
+        $gardenerCart->delete();
+        return redirect("/cart");
     }
 }
