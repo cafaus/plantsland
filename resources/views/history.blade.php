@@ -12,8 +12,12 @@
     @if (count($transactionHistories) == 0)
         <div>Currently there is no transaction history</div>
     @else
+   
         @foreach ($transactionHistories as $transactionHistory)
+        
+            
             <div class="history-item mb-5"> 
+                
                 <div class="history-date"> {{$transactionHistory->created_at}} </div>
 
                 <div class="title ml-3">Plant</div>
@@ -33,6 +37,7 @@
                             <div class="value">{{ number_format( $plantTransactionHistory->totalPrice , 0, ".", ".") }}</div>
                         </div>
                     </div>
+                    
                 @endforeach
 
                 <div class="title ml-3">Gardener</div>
@@ -52,10 +57,11 @@
                             <div class="value">{{ number_format( $gardenerTransactionHistory->totalPrice , 0, ".", ".") }}</div>
                         </div>
                     </div>
+                    
                 @endforeach
                 <div class="h-line"></div>
                 <div class="history-total">
-                    Total Price : {{ number_format( $subTotal , 0, ".", ".") }}
+                    Total Price : {{ number_format( $subTotal[$loop->index] , 0, ".", ".") }}
                 </div>
             </div>
         @endforeach

@@ -8,17 +8,20 @@ class TransactionHistoriesController extends Controller
 {
     public function index(){
         $transactionHistories = \App\TransactionHistory::all();
-        $subTotal = 0;
+        $subTotal = [];
+        
         foreach ($transactionHistories as $transactionHistory) {
+            $total = 0;
             foreach ($transactionHistory->plantTransactionHistories as $plantTransactionHistory){
-                $subTotal += $plantTransactionHistory->totalPrice;
+                $total += $plantTransactionHistory->totalPrice;
             }
             
             foreach ($transactionHistory->gardenerTransactionHistories as $gardenerTransactionHistory){
-                $subTotal += $gardenerTransactionHistory->totalPrice;
+                $total += $gardenerTransactionHistory->totalPrice;
             }
+            array_push($subTotal, $total);
         }
         
-        return view('history', compact('transactionHistories', 'subTotal'));
+        return view('history', compact('transactionHistories','subTotal'));
     }
 }
