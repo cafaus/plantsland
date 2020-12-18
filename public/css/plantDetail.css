@@ -1,0 +1,207 @@
+.content-wrapper {
+    width:100%;
+    height: 400px;
+    display: flex;
+}
+.img-container {
+    display: flex;
+    width: 400px;
+    height: 400px;
+}
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.plant-detail-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height:100%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.plant-detail-container .plant-name {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 38px;
+    color: black;
+}
+.plant-detail-container .h-line {
+    width: 80%;
+    margin-bottom: 10px;
+}
+.plant-detail-container .plant-desc {
+    text-align: center;
+}
+.plant-detail-container .plant-detail {
+    display: flex;
+    width: 100%;
+    padding: 10px 20px;
+    justify-content: space-evenly;
+}
+.detail-text , .detail-value { 
+    text-align: center;
+}
+.detail-value {
+    font-size: 20px;
+}
+.plant-type .detail-value {
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+.plant-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex:1;
+    width: 100%;
+    padding: 0 30px;
+}
+.plant-footer .price {
+    font-family: sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}
+.add-cart-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex:1;
+}
+.add-cart-container .qty-wrapper{
+    display: flex;
+    height: min-content;
+}
+
+.add-cart-container .qty-wrapper input{
+    text-align: center;
+    width: 70px;
+    border: none;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.2);
+    box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.2);
+}
+.add-cart-container .qty-wrapper input::-webkit-outer-spin-button,
+.add-cart-container .qty-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.add-cart-container .qty-wrapper .icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 10px;
+    color: black;
+    background-color: rgb(238, 238, 238);
+}
+
+.add-cart-container .qty-wrapper .icon-container:hover{
+    background-color: lightgray;
+}
+.add-cart-container .qty-wrapper .icon-container:active{
+    background-color: grey;
+}
+
+.h-scroller {
+    display: flex;
+    overflow-x: scroll;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+.h-scroller::-webkit-scrollbar {    
+    display: none;
+}
+
+.sm-image-container {
+    min-width: 80px;
+    min-height: 80px;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    overflow:hidden;
+    margin: 0 5px;
+
+    transition: transform .2s ease-in;
+    
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.sm-image-container:hover{
+    transform: scale(1.08)
+}
+.sm-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.care-list-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.care-list-container .img-container {
+    width: 50%;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.care-list-container .list-container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    min-height: 250px;
+    height: 100%;
+    padding: 0 20px;
+    justify-content: space-evenly;
+}
+.care-list-container .list-container .list-item {
+    display: flex;
+    align-items: center;
+}
+.care-list-container .list-container .list-item .list-icon{
+    height: 20px;
+    width: 20px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.care-list-container .list-container .list-item .list-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.care-list-container .list-container .list-item .list-text{
+    font-size: 15px;
+    line-height: 15px;
+    color: black;
+}
+
+.procedures {
+    padding: 10px 10px 40px 10px;
+}
+.procedures .procedure-container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+.procedure-container .care-desc {
+    margin-top: 5px;
+}

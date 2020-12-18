@@ -27,7 +27,7 @@ class CreatePlantsTable extends Migration
             $table->timestamps();
 
             $table->index('plant_category_id');
-            $table->foreign('plant_category_id')->references('id')->on('plant_catagories')->onDelete('cascade');
+            $table->foreign('plant_category_id')->references('id')->on('plant_categories')->onDelete('cascade');
 
             $table->index('plant_origin_id');
             $table->foreign('plant_origin_id')->references('id')->on('plant_origins')->onDelete('cascade');

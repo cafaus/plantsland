@@ -16,6 +16,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// harus login
+Route::middleware(['auth'])->group( function () { 
+    // role admin/member
+    Route::middleware(['role:admin|member'])->group( function(){
+        
+    });
+    // role member
+    Route::middleware(['role:member'])->group( function(){
+        Route::get('/cart', function() {
+            return view('cart');
+        });
+        Route::get('/history', function() {
+            return view('history');
+        });
+    });
+    //role admin
+    Route::middleware(['role:admin'])->group( function(){
+        
+    });
+} );
+
+Route::get('/gardener', "GardenersController@index");
+Route::get('/store', "PlantsController@index");
+Route::get('/store/{plant}', "PlantsController@show");
+
+Route::get('/gardener/{gardener}', "GardenersController@show");
+
 
 Auth::routes();
 
