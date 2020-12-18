@@ -74,8 +74,8 @@
                             <li class="nav-item dropdown">
                                 @can('isMember')
                                 <div class="member-btn-container">
-                                    <a class="btn-dark mr-3 pt-1 pb-1 pr-2 pl-2" href="/cart" role="button"> Cart </a>
-                                    <a class="btn-dark pt-1 pb-1 pr-2 pl-2"  href="/history" role="button"> History </a>
+                                    <a class="btn-dark mr-2 pt-1 pb-1 pr-2 pl-2" href="/cart" role="button"> Cart </a>
+                                    <a class="btn-dark mr-2 pt-1 pb-1 pr-2 pl-2"  href="/history" role="button"> History </a>
                                 </div>
                                 @endcan
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

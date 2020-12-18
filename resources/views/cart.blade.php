@@ -8,8 +8,9 @@
 
 <div class="custom-container mt-2">
     <div class="title">Cart</div>
-    @for ($i = 0; $i < 5; $i++)
-        <div class="cart-item">
+    <div>Currently there is item in cart</div>
+    @for ($i = 0; $i < 2; $i++)
+        <div class="cart-item mt-2 mb-2 cart-shadow">
             <div class="cart-image">
                 <img src="{{ asset('images/plant.jpg') }}" alt="plant">
             </div>
