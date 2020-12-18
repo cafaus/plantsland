@@ -41,12 +41,17 @@
     color: black;
     
 }
-.cart-delete-btn {
+.cart-action-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-action-btn {
     border: none;
     background-color: transparent;
     padding: 10px 20px;
 }
-.cart-delete-btn:hover{
+.cart-action-btn:hover{
     background-color: lightgrey;
 
 }

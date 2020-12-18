@@ -22,11 +22,18 @@
                 <div class="text">Price</div>
                 <div class="value">50.000.000</div>
             </div>
-            <form action="#">
-                <button class="cart-delete-btn">
-                    <i class="fa fa-trash-alt"></i>
-                </button>
-            </form>
+            <div class="cart-action-btn-container">
+                <form action="#">
+                    <button class="cart-action-btn">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                </form>
+                <form action="#">
+                    <button class="cart-action-btn">
+                        <i class="fa fa-trash-alt"></i>
+                    </button>
+                </form>
+            </div>
         </div>
 
     @endfor
