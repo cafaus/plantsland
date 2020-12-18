@@ -41,6 +41,21 @@
     color: black;
     
 }
+.cart-edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-edit-container input {
+    height: fit-content;
+    text-align: center;
+    width: 80px;
+}
+.cart-edit-container input[type='number']::-webkit-inner-spin-button, 
+.cart-edit-container input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
 .cart-action-btn-container {
     display: flex;
     justify-content: center;

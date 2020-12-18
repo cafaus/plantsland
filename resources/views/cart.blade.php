@@ -23,7 +23,8 @@
                 <div class="value">50.000.000</div>
             </div>
             <div class="cart-action-btn-container">
-                <form action="#">
+                <form action="#" class="cart-edit-container">
+                    <input type="number" name="qty" value="1">
                     <button class="cart-action-btn">
                         <i class="fa fa-edit"></i>
                     </button>
