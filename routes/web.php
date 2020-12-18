@@ -44,9 +44,13 @@ Route::get('/store/{plant}', "PlantsController@show");
 Route::get('/gardener/{gardener}', "GardenersController@show");
 
 Route::get('/cart', "PlantCartsController@index");
+
 Route::post('/plantCart/{plant}', "PlantCartsController@store");
 Route::delete('/plantCart/{plantCart}', 'PlantCartsController@destroy');
 Route::patch('/plantCart/{plantCart}', 'PlantCartsController@update');
+
+Route::post('/gardenerCart/{gardener}', "GardenerCartsController@store");
+
 Route::get('/history', function() {
     return view('history');
 });
