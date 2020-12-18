@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group( function () {
         Route::delete('/plantCart/{plantCart}', 'PlantCartsController@destroy');
         Route::patch('/plantCart/{plantCart}', 'PlantCartsController@update');
 
-        Route::post('/gardenerCart/{gardenerCart}', "GardenerCartsController@store");
+        Route::post('/gardenerCart/{gardener}', "GardenerCartsController@store");
         Route::delete('/gardenerCart/{gardenerCart}', 'GardenerCartsController@destroy');
         Route::patch('/gardenerCart/{gardenerCart}', 'GardenerCartsController@update');
         Route::get('/history', 'TransactionHistoriesController@index');
