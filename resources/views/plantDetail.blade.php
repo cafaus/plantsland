@@ -66,7 +66,7 @@
             </div>
             <div class="plant-footer">
                 <div class="price">Rp{{ number_format( $plant->price , 0, ".", ".") }}</div>
-                <form action="/cart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
+                <form action="/plantCart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="qty-wrapper">
                         <div class="icon-container" id="minus">
