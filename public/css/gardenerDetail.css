@@ -85,8 +85,8 @@
 }
 .gardener-cart input::-webkit-outer-spin-button,
 .gardener-cart input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 .gardener-cart .btn{
     border-radius: 0;

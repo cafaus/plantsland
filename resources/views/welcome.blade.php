@@ -9,7 +9,7 @@
     <img src="{{asset('images/placeholder.jpg')}}" alt="main-background">
     <div class="main-content">
         <div class="text">Find your <br> Best Garderner</div>
-        <a class="btn">Garderner</a>
+        <a class="btn" href="/gardener">Garderner</a>
     </div>
 </div>
 

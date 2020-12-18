@@ -74,6 +74,8 @@
 .add-cart-container .qty-wrapper{
     display: flex;
     height: min-content;
+    justify-content:center;
+    align-items:center;
 }
 
 .add-cart-container .qty-wrapper input{
