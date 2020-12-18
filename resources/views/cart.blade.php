@@ -102,11 +102,35 @@
            
             <div class="cart-action-btn-container">
                 
-                <form action="#" class="cart-edit-container">
-                    <input type="number" name="qty" value="1">
-                    <button class="cart-action-btn">
-                        <i class="fa fa-edit"></i>
-                    </button>
+                <form class="cart-edit-container" action="/gardenerCart/{{$gardenerCart->id}}" enctype="multipart/form-data" method="post">
+                    @csrf
+                    @method('PATCH')
+                    <input id="rentDays"
+                          type="number"
+                          class="form-control{{ $errors->has('rentDays') ? ' is-invalid' : '' }}"
+                          name="rentDays"
+                          value="{{ old('rentDays') }}"
+                          placeholder=""
+                          autocomplete="rentDays" autofocus>
+                    @if ($errors->has('rentDays'))
+                          <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('rentDays') }}</strong>
+                          </span>
+                    @endif
+                    @if (session('alert'))
+                        <div class="alert alert-danger">
+                              {{ session('alert') }}
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+                        <button class="cart-action-btn" type="submit">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    
                 </form>
                 
                 <form action="/gardenerCart/{{$gardenerCart->id}}" method="post">

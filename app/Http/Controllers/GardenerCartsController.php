@@ -28,6 +28,16 @@ class GardenerCartsController extends Controller
         return redirect()->back()->with('success', 'Added to cart!');
     }
 
+    public function update(\App\GardenerCart $gardenerCart){
+        $data = request()->validate([
+            'rentDays' => ['required', 'integer', "min:1"],
+        ]);
+
+        $gardenerCart->rent_days = $data['rentDays'];
+        $gardenerCart->save();
+        return redirect()->back();
+    }
+
     public function destroy(\App\GardenerCart $gardenerCart){
         $gardenerCart->delete();
         return redirect("/cart");
