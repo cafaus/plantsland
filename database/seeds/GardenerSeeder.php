@@ -22,6 +22,46 @@ class GardenerSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
+            [
+                'competence_id' => 2,
+                'name' => 'Joni Rahman',
+                'image' => 'images/gardeners/joni-rahman.jpeg',
+                'likes' => 93,
+                'experience' => 18,
+                'price_per_day' => 400000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'competence_id' => 3,
+                'name' => 'Bey Sikumbang',
+                'image' => 'images/gardeners/bey-sikumbang.jpeg',
+                'likes' => 98,
+                'experience' => 22,
+                'price_per_day' => 650000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'competence_id' => 4,
+                'name' => 'Frans Nasution',
+                'image' => 'images/gardeners/frans-nasution.jpeg',
+                'likes' => 92,
+                'experience' => 17,
+                'price_per_day' => 385000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'competence_id' => 5,
+                'name' => 'Romeo Wajowski',
+                'image' => 'images/gardeners/romeo-wajowski.jpeg',
+                'likes' => 94,
+                'experience' => 19,
+                'price_per_day' => 450000,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ]);
     }
 }
