@@ -10,6 +10,7 @@
         $i = 0;
         $links = Request::segments();
         array_unshift($links, 'Home');
+        $links[count($links)-1] = $plant->name;
     ?>
     @if (count($links) > 1)
         @foreach($links as $segment)
@@ -25,9 +26,21 @@
 
 @section('content')
 <div class="custom-container">
+    @if ($errors->has('quantity'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('quantity') }}</strong>
+        </span>
+    @endif
+    @if (session('alert'))
+        <div class="alert alert-danger"> {{ session('alert') }} </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success"> {{ session('success') }} </div>
+    @endif
+
     <div class="content-wrapper">
         <div class="img-container">
-            <img src="{{ asset($plant->image)}}" alt="plantname">
+            <img src="{{ asset($plant->image) }}" alt="plantname">
         </div>
         <div class="plant-detail-container">
             <div class="plant-name line-clamp-1">{{$plant->name}}</div>
@@ -59,16 +72,14 @@
                         <div class="icon-container" id="minus">
                             <span class="fa fa-minus"></span>
                         </div>
+                        
                         <input id="quantity"
                           type="number"
                           class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
                           name="quantity"
-                          value="{{ old('quantity') }}"
+                          value="{{ old('quantity') ?? 1}}"
                           placeholder=""
                           autocomplete="quantity" autofocus>
-          
-                          
-                          
                          
                         <div class="icon-container" id="plus">
                             <span class="fa fa-plus"></span>
@@ -79,30 +90,14 @@
                 </form>
             </div>
         </div>
-        @if ($errors->has('quantity'))
-                <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('quantity') }}</strong>
-                </span>
-        @endif
-        @if (session('alert'))
-        <div class="alert alert-danger">
-            {{ session('alert') }}
-        </div>
-        @endif
-        @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
+       
     </div>
 
-    {{-- <div class="h-scroller">
-        @for ($i = 0; $i < 25; $i++)
+    <div class="h-scroller">
         <div class="sm-image-container">
-            <img src="{{ asset('images/placeholder.jpg') }}" alt="image-name">
+            <img src="{{ asset($plant->image) }}" alt="image-name">
         </div>
-        @endfor
-    </div> --}}
+    </div>
 
     <div class="h-line-grey"></div>
 

@@ -11,9 +11,8 @@
     <div class="title">Plant Cart</div>
     @if (count($plantCarts) == 0)
         <div>currently there is no item in you plant cart</div>
-    
-        
     @endif
+
     @foreach ($plantCarts as $plantCart)
         <div class="cart-item">
 
@@ -75,13 +74,15 @@
             </div>
         </div>
     @endforeach
-
+    <form action="" class="checkout-btn-container"> 
+        <button class="btn checkout-btn"> Checkout </button>
+    </form>
 
     <div class="title">Gardener Cart</div>
     @if (count($gardenerCarts) == 0)
         <div>currently there is no item in you gardener cart</div>
-    
     @endif
+
     @foreach ($gardenerCarts as $gardenerCart)
         <div class="cart-item">
             <div class="cart-image">
@@ -143,7 +144,9 @@
             </div>
         </div>
     @endforeach
-    
+    <form action="" class="checkout-btn-container"> 
+        <button class="btn checkout-btn"> Checkout </button>
+    </form>
 
 </div>
 
