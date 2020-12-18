@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group( function () {
         Route::post('/gardenerCart/{gardenerCart}', "GardenerCartsController@store");
         Route::delete('/gardenerCart/{gardenerCart}', 'GardenerCartsController@destroy');
         Route::patch('/gardenerCart/{gardenerCart}', 'GardenerCartsController@update');
+        Route::get('/history', 'TransactionHistoriesController@index');
     });
     //role admin
     Route::middleware(['role:admin'])->group( function(){
@@ -50,9 +51,7 @@ Route::get('/gardener/{gardener}', "GardenersController@show");
 
 
 
-Route::get('/history', function() {
-    return view('history');
-});
+
 
 
 
