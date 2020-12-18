@@ -8,33 +8,57 @@
 @section('content')
 
 <div class="custom-container">
-    <div class="title">History</div>
-    <div>Currently there is no transaction history</div>
-    @for ($i = 1; $i <= 2; $i++)
-        <div class="history-item mb-5"> 
-            <div class="history-date"> 12 December 2020 </div>
-            @for ($j = 0; $j < $i+2; $j++)
-                <div class="cart-item">
-                    <div class="cart-image">
-                        <img src="{{ asset('images/plant.jpg') }}" alt="plant" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
+    <div class="title">Transaction History</div>
+    @if (count($transactionHistories) == 0)
+        <div>Currently there is no transaction history</div>
+    @else
+        @foreach ($transactionHistories as $transactionHistory)
+            <div class="history-item mb-5"> 
+                <div class="history-date"> {{$transactionHistory->created_at}} </div>
+                <h3>Plant</h3>
+                @foreach ($transactionHistory->plantTransactionHistories as $plantTransactionHistory)
+                    <div class="cart-item">
+                        <div class="cart-image">
+                            <img src="{{ asset($plantTransactionHistory->image) }}" alt="plant">
+                        </div>
+                        <div class="cart-name line-clamp-1">{{$plantTransactionHistory->name}}</div>
+                        <div class="cart-qty">
+                            <div class="text">Qty</div>
+                            <div class="value">{{$plantTransactionHistory->quantity}}</div>
+                        </div>
+                        <div class="cart-price">
+                            <div class="text">Price</div>
+                            <div class="value">{{$plantTransactionHistory->totalPrice}}</div>
+                        </div>
                     </div>
-                    <div class="cart-name line-clamp-1">Cycus Revoluta Cycus</div>
-                    <div class="cart-qty">
-                        <div class="text">Qty</div>
-                        <div class="value">1</div>
+                @endforeach
+
+                <h3>Gardener</h3>
+                @foreach ($transactionHistory->gardenerTransactionHistories as $gardenerTransactionHistory)
+                    <div class="cart-item">
+                        <div class="cart-image">
+                            <img src="{{ asset($gardenerTransactionHistory->image) }}" alt="gardener">
+                        </div>
+                        <div class="cart-name line-clamp-1">{{$gardenerTransactionHistory->name}}</div>
+                        <div class="cart-qty">
+                            <div class="text">Qty</div>
+                            <div class="value">{{$gardenerTransactionHistory->rent_days}}</div>
+                        </div>
+                        <div class="cart-price">
+                            <div class="text">Price</div>
+                            <div class="value">{{$gardenerTransactionHistory->totalPrice}}</div>
+                        </div>
                     </div>
-                    <div class="cart-price">
-                        <div class="text">Price</div>
-                        <div class="value">50.000.000</div>
-                    </div>
+                @endforeach
+                <div class="h-line"></div>
+                <div class="history-total">
+                    Total Price : {{$subTotal}}
                 </div>
-            @endfor
-            <div class="h-line"></div>
-            <div class="history-total">
-                Total Price : 200.000.000
             </div>
-        </div>
-    @endfor
+        @endforeach
+    @endif
+    
+    
 </div>
 
 <div class="history-footer"></div>

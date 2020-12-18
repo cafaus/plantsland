@@ -142,9 +142,17 @@
         </div>
     @endforeach
     @if (count($plantCarts) != 0 && count($gardenerCarts) != 0)
-    <form action="" class="checkout-btn-container mt-2 mb-5"> 
-        <button class="btn checkout-btn"> Checkout </button>
-    </form>
+        <form action="/cart/checkout" class="checkout-btn-container mt-2 mb-5" enctype="multipart/form-data" method="get"> 
+            @csrf
+            <button class="btn checkout-btn"> Checkout </button>
+        </form>
+        
+    @endif
+    @if (session('alert'))
+        <div class="alert alert-danger"> {{ session('alert') }} </div>
+        @endif
+    @if (session('success'))
+       <div class="alert alert-success"> {{ session('success') }} </div>
     @endif
 
 </div>

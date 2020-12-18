@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function gardenerCarts(){
         return $this->hasMany(GardenerCart::class);
     }
+
+    public function transactionHistory(){
+        return $this->hasOne(TransactionHistory::class);
+    }
 }
