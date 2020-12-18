@@ -53,20 +53,47 @@
             </div>
             <div class="plant-footer">
                 <div class="price">Rp{{ number_format( $plant->price , 0, ".", ".") }}</div>
-                <form class="add-cart-container">
+                <form action="/cart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
+                    @csrf
                     <div class="qty-wrapper">
                         <div class="icon-container" id="minus">
                             <span class="fa fa-minus"></span>
                         </div>
-                        <input id="qty" type="number" name="qty" value="1">
+                        <input id="quantity"
+                          type="number"
+                          class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
+                          name="quantity"
+                          value="{{ old('quantity') }}"
+                          placeholder=""
+                          autocomplete="quantity" autofocus>
+          
+                          
+                          
+                         
                         <div class="icon-container" id="plus">
                             <span class="fa fa-plus"></span>
                         </div>
                     </div>
-                    <div class="btn">Add To Cart</div>
+                   
+                    <button class="btn" type="submit">Add To Cart</button>
                 </form>
             </div>
         </div>
+        @if ($errors->has('quantity'))
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('quantity') }}</strong>
+                </span>
+        @endif
+        @if (session('alert'))
+        <div class="alert alert-danger">
+            {{ session('alert') }}
+        </div>
+        @endif
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
     </div>
 
     {{-- <div class="h-scroller">
@@ -171,7 +198,7 @@
         window.addEventListener('load', qtyFunction);
         function qtyFunction () {
             console.log("loaded");
-            const qtyEl = document.getElementById('qty');
+            const qtyEl = document.getElementById('quantity');
             const plusEl = document.getElementById('plus');
             const minusEl = document.getElementById('minus');
             plusEl.onclick = (e) =>  {
