@@ -19,8 +19,26 @@ class GardenerPortofolioSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'gardener_id' => 1,
-                'image' => 'images/portofolios/ujo-sutejo/2.jpg',
+                'gardener_id' => 2,
+                'image' => 'images/portofolios/joni-rahman/2.jpg',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'gardener_id' => 3,
+                'image' => 'images/portofolios/bey-sikumbang/2.jpg',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'gardener_id' => 4,
+                'image' => 'images/portofolios/frans-nasution/2.jpg',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'gardener_id' => 5,
+                'image' => 'images/portofolios/romeo-wajowski/2.jpg',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],

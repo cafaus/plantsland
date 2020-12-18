@@ -66,7 +66,7 @@
         <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
     </div>
     <div class="portfolio-container">
-        <img src="{{ asset($gardener->gardenerPortofolios->find(1)->image) }}" alt="portfolio">
+        <img src="{{ asset($gardener->gardenerPortofolios[0]->image) }}" alt="portfolio">
     </div>
 </a>
 @endforeach

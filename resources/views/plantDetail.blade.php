@@ -10,6 +10,7 @@
         $i = 0;
         $links = Request::segments();
         array_unshift($links, 'Home');
+        $links[count($links)-1] = $plant->name;
     ?>
     @if (count($links) > 1)
         @foreach($links as $segment)
@@ -25,9 +26,21 @@
 
 @section('content')
 <div class="custom-container">
+    @if ($errors->has('quantity'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('quantity') }}</strong>
+        </span>
+    @endif
+    @if (session('alert'))
+        <div class="alert alert-danger"> {{ session('alert') }} </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success"> {{ session('success') }} </div>
+    @endif
+
     <div class="content-wrapper">
         <div class="img-container">
-            <img src="{{ asset($plant->image)}}" alt="plantname">
+            <img src="{{ asset($plant->image) }}" alt="plantname">
         </div>
         <div class="plant-detail-container">
             <div class="plant-name line-clamp-1">{{$plant->name}}</div>
@@ -53,29 +66,38 @@
             </div>
             <div class="plant-footer">
                 <div class="price">Rp{{ number_format( $plant->price , 0, ".", ".") }}</div>
-                <form class="add-cart-container">
+                <form action="/cart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
+                    @csrf
                     <div class="qty-wrapper">
                         <div class="icon-container" id="minus">
                             <span class="fa fa-minus"></span>
                         </div>
-                        <input id="qty" type="number" name="qty" value="1">
+                        
+                        <input id="quantity"
+                          type="number"
+                          class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
+                          name="quantity"
+                          value="{{ old('quantity') ?? 1}}"
+                          placeholder=""
+                          autocomplete="quantity" autofocus>
+                         
                         <div class="icon-container" id="plus">
                             <span class="fa fa-plus"></span>
                         </div>
                     </div>
-                    <div class="btn">Add To Cart</div>
+                   
+                    <button class="btn" type="submit">Add To Cart</button>
                 </form>
             </div>
         </div>
+       
     </div>
 
-    {{-- <div class="h-scroller">
-        @for ($i = 0; $i < 25; $i++)
+    <div class="h-scroller">
         <div class="sm-image-container">
-            <img src="{{ asset('images/placeholder.jpg') }}" alt="image-name">
+            <img src="{{ asset($plant->image) }}" alt="image-name">
         </div>
-        @endfor
-    </div> --}}
+    </div>
 
     <div class="h-line-grey"></div>
 
@@ -171,7 +193,7 @@
         window.addEventListener('load', qtyFunction);
         function qtyFunction () {
             console.log("loaded");
-            const qtyEl = document.getElementById('qty');
+            const qtyEl = document.getElementById('quantity');
             const plusEl = document.getElementById('plus');
             const minusEl = document.getElementById('minus');
             plusEl.onclick = (e) =>  {
