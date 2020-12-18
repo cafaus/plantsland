@@ -141,7 +141,7 @@
             </div>
         </div>
     @endforeach
-    @if (count($plantCarts) != 0 && count($gardenerCarts) != 0)
+    @if (count($plantCarts) != 0 || count($gardenerCarts) != 0)
         <form action="/cart/checkout" class="checkout-btn-container mt-2 mb-5" enctype="multipart/form-data" method="get"> 
             @csrf
             <button class="btn checkout-btn"> Checkout </button>
