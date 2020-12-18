@@ -83,7 +83,7 @@
     @foreach ($gardenerCarts as $gardenerCart)
         <div class="cart-item cart-shadow mb-3">
             <div class="cart-image">
-                <img src="{{ asset($gardenerCart->gardener->image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';" alt="plant">
+                <img src="{{ asset($gardenerCart->gardener->image) }}" onerror="this.onerror=null;this.src='{{ asset('images/people.png') }}';" alt="plant">
             </div>
             <div class="cart-name line-clamp-1">{{$gardenerCart->gardener->name}}</div>
             <div class="cart-qty">
