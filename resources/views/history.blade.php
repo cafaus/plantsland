@@ -21,7 +21,7 @@
                 @foreach ($transactionHistory->plantTransactionHistories as $plantTransactionHistory)
                     <div class="cart-item">
                         <div class="cart-image">
-                            <img src="{{ asset($plantTransactionHistory->image) }}" alt="plant">
+                            <img src="{{ asset($plantTransactionHistory->image) }}" alt="plant" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
                         </div>
                         <div class="cart-name line-clamp-1">{{$plantTransactionHistory->name}}</div>
                         <div class="cart-qty">
@@ -40,7 +40,7 @@
                 @foreach ($transactionHistory->gardenerTransactionHistories as $gardenerTransactionHistory)
                     <div class="cart-item">
                         <div class="cart-image">
-                            <img src="{{ asset($gardenerTransactionHistory->image) }}" alt="gardener">
+                            <img src="{{ asset($gardenerTransactionHistory->image) }}" alt="gardener" onerror="this.onerror=null;this.src='{{ asset('images/people.png') }}';">
                         </div>
                         <div class="cart-name line-clamp-1">{{$gardenerTransactionHistory->name}}</div>
                         <div class="cart-qty">
