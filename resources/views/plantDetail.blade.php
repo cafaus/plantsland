@@ -161,9 +161,13 @@
     <div class="h-scroller">
         @for ($i = 0; $i < 10; $i++)
             <a href="/store/plantname" class="plant-card shadow m-2">
-                <img src="{{ asset('images/plant.jpg') }}" alt="plant">
+                <div class="plant-image">
+                    <img src="{{ asset('images/plant.jpg') }}" alt="plant">
+                </div>
                 <div class="plant-content"> 
-                    <div class="name line-clamp-2">Bonsai Ficus Ficus Ficus Ficus Ficus Ficus Ficus Ficus</div>
+                    <div class="name">
+                        <div class="line-clamp-2">Bonsai Ficus Ficus Ficus Ficus Ficus Ficus Ficus Ficus</div>
+                    </div>
                     <div class="h-line"></div>
                     <div class="detail">
                         <div class="detail-content">

@@ -14,8 +14,7 @@
     @endif
 
     @foreach ($plantCarts as $plantCart)
-        <div class="cart-item">
-
+        <div class="cart-item cart-shadow mb-3">
             <div class="cart-image">
                 <img src="{{ asset($plantCart->plant->image) }}" alt="plant">
             </div>
@@ -29,7 +28,7 @@
             @endphp
             <div class="cart-price">
                 <div class="text">Price</div>
-                <div class="value">{{$price}}</div>
+                <div class="value">{{ number_format( $price , 0, ".", ".") }}</div>
             </div>
            
             <div class="cart-action-btn-container">
@@ -74,9 +73,7 @@
             </div>
         </div>
     @endforeach
-    <form action="" class="checkout-btn-container"> 
-        <button class="btn checkout-btn"> Checkout </button>
-    </form>
+    
 
     <div class="title">Gardener Cart</div>
     @if (count($gardenerCarts) == 0)
@@ -84,7 +81,7 @@
     @endif
 
     @foreach ($gardenerCarts as $gardenerCart)
-        <div class="cart-item">
+        <div class="cart-item cart-shadow mb-3">
             <div class="cart-image">
                 <img src="{{ asset($gardenerCart->gardener->image) }}" alt="plant">
             </div>
@@ -98,7 +95,7 @@
             @endphp
             <div class="cart-price">
                 <div class="text">Price</div>
-                <div class="value">{{$price}}</div>
+                <div class="value">{{ number_format( $price , 0, ".", ".") }}</div>
             </div>
            
             <div class="cart-action-btn-container">
@@ -144,9 +141,11 @@
             </div>
         </div>
     @endforeach
-    <form action="" class="checkout-btn-container"> 
+    @if (count($plantCarts) != 0 && count($gardenerCarts) != 0)
+    <form action="" class="checkout-btn-container mt-2 mb-5"> 
         <button class="btn checkout-btn"> Checkout </button>
     </form>
+    @endif
 
 </div>
 
