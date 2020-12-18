@@ -41,12 +41,32 @@
     color: black;
     
 }
-.cart-delete-btn {
+.cart-edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-edit-container input {
+    height: fit-content;
+    text-align: center;
+    width: 80px;
+}
+.cart-edit-container input[type='number']::-webkit-inner-spin-button, 
+.cart-edit-container input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+.cart-action-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-action-btn {
     border: none;
     background-color: transparent;
     padding: 10px 20px;
 }
-.cart-delete-btn:hover{
+.cart-action-btn:hover{
     background-color: lightgrey;
 
 }
