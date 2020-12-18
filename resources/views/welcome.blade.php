@@ -18,7 +18,7 @@
         @foreach( $plants as $plant )
             <a href="/store/{{$plant->id}}" class="plant-card shadow m-2">
                 <div class="plant-image">
-                    <img src="{{ asset($plant->image) }}" alt="plant">
+                    <img src="{{ asset($plant->image) }}" alt="plant" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
                 </div>
                 <div class="plant-content"> 
                     <div class="name">

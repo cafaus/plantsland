@@ -16,7 +16,7 @@
             @for ($j = 0; $j < $i+2; $j++)
                 <div class="cart-item">
                     <div class="cart-image">
-                        <img src="{{ asset('images/plant.jpg') }}" alt="plant">
+                        <img src="{{ asset('images/plant.jpg') }}" alt="plant" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
                     </div>
                     <div class="cart-name line-clamp-1">Cycus Revoluta Cycus</div>
                     <div class="cart-qty">

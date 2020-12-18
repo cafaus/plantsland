@@ -40,7 +40,7 @@
 
     <div class="content-wrapper">
         <div class="img-container">
-            <img src="{{ asset($plant->image) }}" alt="plantname">
+            <img src="{{ asset($plant->image) }}" alt="plantname" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
         </div>
         <div class="plant-detail-container">
             <div class="plant-name line-clamp-1">{{$plant->name}}</div>
@@ -95,7 +95,7 @@
 
     <div class="h-scroller">
         <div class="sm-image-container">
-            <img src="{{ asset($plant->image) }}" alt="image-name">
+            <img src="{{ asset($plant->image) }}" alt="image-name" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
         </div>
     </div>
 
@@ -115,7 +115,7 @@
     <div class="title">Care</div>
     <div class="care-list-container">
         <div class="img-container">
-            <img src="{{ asset('images/placeholder.jpg' )}}" alt="plantname">
+            <img src="{{ asset('images/placeholder.jpg' )}}" alt="plantname" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
         </div>
         <?php 
             $tipsSummary = [
@@ -131,7 +131,7 @@
             @foreach ($tipsSummary as $tip)
                 <div class="list-item">
                     <div class="list-icon">
-                        <img src="{{ asset('images/leaf.png')}}" alt="list-icon">
+                        <img src="{{ asset('images/leaf.png')}}" alt="list-icon" >
                     </div>
                     <div class="list-text">
                         {{$tip}}
@@ -162,7 +162,7 @@
         @foreach ($plants as $plant )
             <a href="/store/{{$plant->id}}" class="plant-card shadow m-2">
                 <div class="plant-image">
-                    <img src="{{ asset($plant->image) }}" alt="plant">
+                    <img src="{{ asset($plant->image) }}" alt="plant" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
                 </div>
                 <div class="plant-content"> 
                     <div class="name">
