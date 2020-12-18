@@ -17,7 +17,6 @@
                 <div class="history-date"> {{$transactionHistory->created_at}} </div>
 
                 <div class="title ml-3">Plant</div>
-                <div class="h-line"></div>
 
                 @foreach ($transactionHistory->plantTransactionHistories as $plantTransactionHistory)
                     <div class="cart-item">
@@ -31,14 +30,13 @@
                         </div>
                         <div class="cart-price">
                             <div class="text">Price</div>
-                            <div class="value">{{$plantTransactionHistory->totalPrice}}</div>
+                            <div class="value">{{ number_format( $plantTransactionHistory->totalPrice , 0, ".", ".") }}</div>
                         </div>
                     </div>
                 @endforeach
 
                 <div class="title ml-3">Gardener</div>
-                <div class="h-line"></div>
-                
+
                 @foreach ($transactionHistory->gardenerTransactionHistories as $gardenerTransactionHistory)
                     <div class="cart-item">
                         <div class="cart-image">
@@ -51,13 +49,13 @@
                         </div>
                         <div class="cart-price">
                             <div class="text">Price</div>
-                            <div class="value">{{$gardenerTransactionHistory->totalPrice}}</div>
+                            <div class="value">{{ number_format( $gardenerTransactionHistory->totalPrice , 0, ".", ".") }}</div>
                         </div>
                     </div>
                 @endforeach
                 <div class="h-line"></div>
                 <div class="history-total">
-                    Total Price : {{$subTotal}}
+                    Total Price : {{ number_format( $subTotal , 0, ".", ".") }}
                 </div>
             </div>
         @endforeach
