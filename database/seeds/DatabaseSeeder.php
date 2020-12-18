@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(GardenerSeeder::class);
         $this->call(GardenerPortofolioSeeder::class);
         $this->call(GardenerCartSeeder::class);
+        $this->call(TransactionHistorySeeder::class);
+        $this->call(PlantTransactionHistorySeeder::class);
+        $this->call(GardenerTransactionHistorySeeder::class);
     }
 }

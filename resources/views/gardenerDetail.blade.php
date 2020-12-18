@@ -14,10 +14,27 @@
         @endif
     @endfor
 </div>
+<div class="custom-container">
+    @if ($errors->has('rentDays'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('rentDays') }}</strong>
+        </span>
+    @endif
+    @if (session('alert'))
+    <div class="alert alert-danger">
+        {{ session('alert') }}
+    </div>
+    @endif
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+</div>
 
-<div class="garderner-profile-container">
+<div class="gardener-profile-container">
     <div class="profile-pict-container"> 
-        <img class="profile-pict" src="{{asset($gardener->image)}}" alt="profile-pict">
+        <img class="profile-pict" src="{{asset($gardener->image)}}" alt="profile-pict" onerror="this.onerror=null;this.src='{{ asset('images/people.png') }}';">
     </div>
     <div class="main-content">
         <div class="name line-clamp-1">{{$gardener->name}}</div>
@@ -33,7 +50,19 @@
             </div>
         </div>
         <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
-        <div class="btn mt-2">Make Appointment</div>
+        <form action="/gardenerCart/{{$gardener->id}}" enctype="multipart/form-data" method="post" class="gardener-cart mt-2">
+            @csrf
+            <input id="rentDays"
+                type="number"
+                class="{{ $errors->has('rentDays') ? ' is-invalid' : '' }}"
+                name="rentDays"
+                value="{{ old('rentDays') ?? 1}}"
+                placeholder="days"
+                autocomplete="rentDays" autofocus
+            >
+            <button type="submit" class="btn">Make Appointment</button>
+        </form>
+        
     </div>
 </div>
 
@@ -41,7 +70,9 @@
     <div class="title mb-3">Portfolio</div>
     <div class="d-flex flex-wrap justify-content-center"> 
         @foreach ($gardener->gardenerPortofolios as $portofolio)
-            <div class="portfolio-wrapper"> <img class="portfolio" src="{{asset($portofolio->image)}}" alt="portfolio"></div>
+            <div class="portfolio-wrapper"> 
+                <img class="portfolio" src="{{asset($portofolio->image)}}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
+            </div>
         @endforeach
     </div>
 </div>

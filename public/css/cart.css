@@ -72,3 +72,11 @@
     background-color: lightgrey;
 
 }
+.checkout-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+}
+.checkout-btn{  
+    width: 300px;
+}

@@ -10,6 +10,7 @@
         $i = 0;
         $links = Request::segments();
         array_unshift($links, 'Home');
+        $links[count($links)-1] = $plant->name;
     ?>
     @if (count($links) > 1)
         @foreach($links as $segment)
@@ -25,9 +26,21 @@
 
 @section('content')
 <div class="custom-container">
+    @if ($errors->has('quantity'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('quantity') }}</strong>
+        </span>
+    @endif
+    @if (session('alert'))
+        <div class="alert alert-danger"> {{ session('alert') }} </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success"> {{ session('success') }} </div>
+    @endif
+
     <div class="content-wrapper">
         <div class="img-container">
-            <img src="{{ asset($plant->image)}}" alt="plantname">
+            <img src="{{ asset($plant->image) }}" alt="plantname" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
         </div>
         <div class="plant-detail-container">
             <div class="plant-name line-clamp-1">{{$plant->name}}</div>
@@ -53,29 +66,38 @@
             </div>
             <div class="plant-footer">
                 <div class="price">Rp{{ number_format( $plant->price , 0, ".", ".") }}</div>
-                <form class="add-cart-container">
+                <form action="/plantCart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
+                    @csrf
                     <div class="qty-wrapper">
                         <div class="icon-container" id="minus">
                             <span class="fa fa-minus"></span>
                         </div>
-                        <input id="qty" type="number" name="qty" value="1">
+                        
+                        <input id="quantity"
+                          type="number"
+                          class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
+                          name="quantity"
+                          value="{{ old('quantity') ?? 1}}"
+                          placeholder=""
+                          autocomplete="quantity" autofocus>
+                         
                         <div class="icon-container" id="plus">
                             <span class="fa fa-plus"></span>
                         </div>
                     </div>
-                    <div class="btn">Add To Cart</div>
+                   
+                    <button class="btn" type="submit">Add To Cart</button>
                 </form>
             </div>
         </div>
+       
     </div>
 
-    {{-- <div class="h-scroller">
-        @for ($i = 0; $i < 25; $i++)
+    <div class="h-scroller">
         <div class="sm-image-container">
-            <img src="{{ asset('images/placeholder.jpg') }}" alt="image-name">
+            <img src="{{ asset($plant->image) }}" alt="image-name" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
         </div>
-        @endfor
-    </div> --}}
+    </div>
 
     <div class="h-line-grey"></div>
 
@@ -93,7 +115,7 @@
     <div class="title">Care</div>
     <div class="care-list-container">
         <div class="img-container">
-            <img src="{{ asset('images/placeholder.jpg' )}}" alt="plantname">
+            <img src="{{ asset('images/placeholder.jpg' )}}" alt="plantname" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
         </div>
         <?php 
             $tipsSummary = [
@@ -109,7 +131,7 @@
             @foreach ($tipsSummary as $tip)
                 <div class="list-item">
                     <div class="list-icon">
-                        <img src="{{ asset('images/leaf.png')}}" alt="list-icon">
+                        <img src="{{ asset('images/leaf.png')}}" alt="list-icon" >
                     </div>
                     <div class="list-text">
                         {{$tip}}
@@ -137,28 +159,32 @@
 <div class="custom-container">
     <div class="title">Related Products</div>
     <div class="h-scroller">
-        @for ($i = 0; $i < 10; $i++)
-            <a href="/store/plantname" class="plant-card shadow m-2">
-                <img src="{{ asset('images/plant.jpg') }}" alt="plant">
+        @foreach ($plants as $plant )
+            <a href="/store/{{$plant->id}}" class="plant-card shadow m-2">
+                <div class="plant-image">
+                    <img src="{{ asset($plant->image) }}" alt="plant" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
+                </div>
                 <div class="plant-content"> 
-                    <div class="name line-clamp-2">Bonsai Ficus Ficus Ficus Ficus Ficus Ficus Ficus Ficus</div>
+                    <div class="name">
+                        <div class="line-clamp-2">{{$plant->name}}</div>
+                    </div>
                     <div class="h-line"></div>
                     <div class="detail">
                         <div class="detail-content">
                             <div class="sub-title line-clamp-1">Height</div>
-                            <div class="desc line-clamp-1">± 999 cm</div>
+                            <div class="desc line-clamp-1">± {{$plant->height}} cm</div>
                         </div>
                         <div class="v-line"></div>
                         <div class="detail-content">
                             <div class="sub-title line-clamp-1">Pot ∅</div>
-                            <div class="desc line-clamp-1">999 cm</div>
+                            <div class="desc line-clamp-1">{{$plant->pot_size}} cm</div>
                         </div>
                     </div>
                     <div class="h-line"></div>
-                    <div class="price">Rp {{ number_format( 9999999 , 0, ".", ".") }}</div>
+                    <div class="price">Rp {{ number_format( $plant->price , 0, ".", ".") }}</div>
                 </div>
             </a>  
-        @endfor
+        @endforeach
     </div>
 
 </div>
@@ -171,7 +197,7 @@
         window.addEventListener('load', qtyFunction);
         function qtyFunction () {
             console.log("loaded");
-            const qtyEl = document.getElementById('qty');
+            const qtyEl = document.getElementById('quantity');
             const plusEl = document.getElementById('plus');
             const minusEl = document.getElementById('minus');
             plusEl.onclick = (e) =>  {
