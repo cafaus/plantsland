@@ -1,4 +1,4 @@
-.garderner-profile-container {
+.gardener-profile-container {
     width: 100%;
     height: 450px;
     position: relative;
@@ -72,3 +72,22 @@
     object-fit: cover;
 }
 
+.gardener-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+.gardener-cart input {
+    text-align: center;
+    box-sizing: border-box;
+    height: 100%;
+}
+.gardener-cart input::-webkit-outer-spin-button,
+.gardener-cart input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.gardener-cart .btn{
+    border-radius: 0;
+}
