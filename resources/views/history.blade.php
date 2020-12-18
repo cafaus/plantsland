@@ -15,7 +15,10 @@
         @foreach ($transactionHistories as $transactionHistory)
             <div class="history-item mb-5"> 
                 <div class="history-date"> {{$transactionHistory->created_at}} </div>
-                <h3>Plant</h3>
+
+                <div class="title ml-3">Plant</div>
+                <div class="h-line"></div>
+
                 @foreach ($transactionHistory->plantTransactionHistories as $plantTransactionHistory)
                     <div class="cart-item">
                         <div class="cart-image">
@@ -33,7 +36,9 @@
                     </div>
                 @endforeach
 
-                <h3>Gardener</h3>
+                <div class="title ml-3">Gardener</div>
+                <div class="h-line"></div>
+                
                 @foreach ($transactionHistory->gardenerTransactionHistories as $gardenerTransactionHistory)
                     <div class="cart-item">
                         <div class="cart-image">
