@@ -7,6 +7,7 @@
 @section('content')
 
 <div class="custom-container mt-2">
+
     <div class="title">Plant Cart</div>
     @if (count($plantCarts) == 0)
         <div>currently there is no item in you plant cart</div>
@@ -15,6 +16,7 @@
     @endif
     @foreach ($plantCarts as $plantCart)
         <div class="cart-item">
+
             <div class="cart-image">
                 <img src="{{ asset($plantCart->plant->image) }}" alt="plant">
             </div>
@@ -32,12 +34,37 @@
             </div>
            
             <div class="cart-action-btn-container">
-                <form action="#" class="cart-edit-container">
-                    <input type="number" name="qty" value="1">
-                    <button class="cart-action-btn">
-                        <i class="fa fa-edit"></i>
-                    </button>
+                <form class="cart-edit-container" action="/plantCart/{{$plantCart->id}}" enctype="multipart/form-data" method="post">
+                    @csrf
+                    @method('PATCH')
+                    <input id="quantity"
+                          type="number"
+                          class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
+                          name="quantity"
+                          value="{{ old('quantity') }}"
+                          placeholder=""
+                          autocomplete="quantity" autofocus>
+                    @if ($errors->has('quantity'))
+                          <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('quantity') }}</strong>
+                          </span>
+                    @endif
+                    @if (session('alert'))
+                        <div class="alert alert-danger">
+                              {{ session('alert') }}
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+                        <button class="cart-action-btn" type="submit">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    
                 </form>
+                
                 <form action="/plantCart/{{$plantCart->id}}" method="post">
                     @csrf
                     @method("DELETE")
@@ -74,12 +101,14 @@
             </div>
            
             <div class="cart-action-btn-container">
+                
                 <form action="#" class="cart-edit-container">
                     <input type="number" name="qty" value="1">
                     <button class="cart-action-btn">
                         <i class="fa fa-edit"></i>
                     </button>
                 </form>
+                
                 <form action="#">
                     <button class="cart-action-btn">
                         <i class="fa fa-trash-alt"></i>

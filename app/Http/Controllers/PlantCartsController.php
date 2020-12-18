@@ -43,6 +43,19 @@ class PlantCartsController extends Controller
         return redirect()->back()->with('success', 'Added to cart!');
     }
 
+    public function update(\App\PlantCart $plantCart){
+        $data = request()->validate([
+            'quantity' => ['required', 'integer', "min:1"],
+        ]);
+
+        if($plantCart->plant->stock < $data['quantity']){
+            return redirect()->back()->with('alert', "Stock is not enough!! (must be below {$plantCart->plant->stock})");
+        }
+        $plantCart->quantity = $data['quantity'];
+        $plantCart->save();
+        return redirect()->back();
+    }
+
     public function destroy(\App\PlantCart $plantCart){
         $plantCart->delete();
         return redirect("/cart");
