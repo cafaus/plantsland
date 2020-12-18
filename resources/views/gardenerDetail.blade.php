@@ -33,7 +33,43 @@
             </div>
         </div>
         <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
-        <div class="btn mt-2">Make Appointment</div>
+        <div>
+            <form action="/cart/{{$gardener->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
+                @csrf
+                <div class="qty-wrapper">
+                    
+                    <input id="rentDays"
+                      type="number"
+                      class="form-control{{ $errors->has('rentDays') ? ' is-invalid' : '' }}"
+                      name="rentDays"
+                      value="{{ old('rentDays') }}"
+                      placeholder=""
+                      autocomplete="rentDays" autofocus>
+      
+                      @if ($errors->has('rentDays'))
+                      <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('rentDays') }}</strong>
+                      </span>
+                    @endif
+                    @if (session('alert'))
+                    <div class="alert alert-danger">
+                        {{ session('alert') }}
+                    </div>
+                    @endif
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                      
+                    
+                </div>
+               
+                <div class="btn mt-2">Make Appointment</div>
+            </form>
+            
+        </div>
+        
     </div>
 </div>
 
