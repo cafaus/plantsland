@@ -9,8 +9,8 @@ class PlantCartsController extends Controller
 {
     public function index(){
         $plantCarts = \App\PlantCart::all();
-        
-        return view('cart',compact('plantCarts'));
+        $gardenerCarts = \App\GardenerCart::all();
+        return view('cart',compact('plantCarts', 'gardenerCarts'));
     }
     public function store(\App\Plant $plant){
         $data = request()->validate([
@@ -41,5 +41,10 @@ class PlantCartsController extends Controller
         }
        
         return redirect()->back()->with('success', 'Added to cart!');
+    }
+
+    public function destroy(\App\PlantCart $plantCart){
+        $plantCart->delete();
+        return redirect("/cart");
     }
 }

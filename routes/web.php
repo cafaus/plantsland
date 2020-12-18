@@ -23,8 +23,8 @@ Route::get('/store/{plant}', "PlantsController@show");
 
 Route::get('/gardener/{gardener}', "GardenersController@show");
 Route::get('/cart', "PlantCartsController@index");
-Route::post('/cart/{plant}', "PlantCartsController@store");
-
+Route::post('/plantCart/{plant}', "PlantCartsController@store");
+Route::delete('/plantCart/{plantCart}', 'PlantCartsController@destroy');
 Route::get('/history', function() {
     return view('history');
 });
