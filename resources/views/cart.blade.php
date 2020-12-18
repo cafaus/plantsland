@@ -6,7 +6,8 @@
 
 @section('content')
 
-<div class="custom-container">
+<div class="custom-container mt-2">
+    <div class="title">Cart</div>
     @for ($i = 0; $i < 5; $i++)
         <div class="cart-item">
             <div class="cart-image">
