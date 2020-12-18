@@ -8,20 +8,24 @@
 
 <div class="custom-container mt-2">
     <div class="title">Cart</div>
-    @for ($i = 0; $i < 5; $i++)
+    @foreach ($plantCarts as $plantCart)
         <div class="cart-item">
             <div class="cart-image">
                 <img src="{{ asset('images/plant.jpg') }}" alt="plant">
             </div>
-            <div class="cart-name line-clamp-1">Cycus Revoluta Cycus</div>
+            <div class="cart-name line-clamp-1">{{$plantCart->plant->name}}</div>
             <div class="cart-qty">
                 <div class="text">Qty</div>
-                <div class="value">1</div>
+                <div class="value">{{$plantCart->quantity}}</div>
             </div>
+            @php
+                $price = $plantCart->quantity * $plantCart->plant->price;
+            @endphp
             <div class="cart-price">
                 <div class="text">Price</div>
-                <div class="value">50.000.000</div>
+                <div class="value">{{$price}}</div>
             </div>
+           
             <div class="cart-action-btn-container">
                 <form action="#" class="cart-edit-container">
                     <input type="number" name="qty" value="1">
@@ -37,7 +41,7 @@
             </div>
         </div>
 
-    @endfor
+    @endforeach
     
 
 </div>

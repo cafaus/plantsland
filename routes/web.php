@@ -22,9 +22,7 @@ Route::get('/store', "PlantsController@index");
 Route::get('/store/{plant}', "PlantsController@show");
 
 Route::get('/gardener/{gardener}', "GardenersController@show");
-Route::get('/cart', function() {
-    return view('cart');
-});
+Route::get('/cart', "PlantCartsController@index");
 Route::get('/history', function() {
     return view('history');
 });

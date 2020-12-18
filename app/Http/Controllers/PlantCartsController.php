@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PlantCartsController extends Controller
 {
+    public function index(){
+        $plantCarts = \App\PlantCart::all();
+        
+        return view('cart',compact('plantCarts'));
+    }
     public function store($plantId){
         $data = request();
         $newPlantCart = new \App\CartPlant();
