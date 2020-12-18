@@ -16,7 +16,7 @@
     @foreach ($plantCarts as $plantCart)
         <div class="cart-item cart-shadow mb-3">
             <div class="cart-image">
-                <img src="{{ asset($plantCart->plant->image) }}" alt="plant">
+                <img src="{{ asset($plantCart->plant->image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';" alt="plant">
             </div>
             <div class="cart-name line-clamp-1">{{$plantCart->plant->name}}</div>
             <div class="cart-qty">
@@ -83,7 +83,7 @@
     @foreach ($gardenerCarts as $gardenerCart)
         <div class="cart-item cart-shadow mb-3">
             <div class="cart-image">
-                <img src="{{ asset($gardenerCart->gardener->image) }}" alt="plant">
+                <img src="{{ asset($gardenerCart->gardener->image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';" alt="plant">
             </div>
             <div class="cart-name line-clamp-1">{{$gardenerCart->gardener->name}}</div>
             <div class="cart-qty">

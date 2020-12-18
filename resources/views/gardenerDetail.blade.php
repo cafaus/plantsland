@@ -34,7 +34,7 @@
 
 <div class="gardener-profile-container">
     <div class="profile-pict-container"> 
-        <img class="profile-pict" src="{{asset($gardener->image)}}" alt="profile-pict">
+        <img class="profile-pict" src="{{asset($gardener->image)}}" alt="profile-pict" onerror="this.onerror=null;this.src='{{ asset('images/people.png') }}';">
     </div>
     <div class="main-content">
         <div class="name line-clamp-1">{{$gardener->name}}</div>
@@ -70,7 +70,9 @@
     <div class="title mb-3">Portfolio</div>
     <div class="d-flex flex-wrap justify-content-center"> 
         @foreach ($gardener->gardenerPortofolios as $portofolio)
-            <div class="portfolio-wrapper"> <img class="portfolio" src="{{asset($portofolio->image)}}" alt="portfolio"></div>
+            <div class="portfolio-wrapper"> 
+                <img class="portfolio" src="{{asset($portofolio->image)}}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
+            </div>
         @endforeach
     </div>
 </div>
