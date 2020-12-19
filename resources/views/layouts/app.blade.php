@@ -91,7 +91,7 @@
                                                 <div> Add Plant </div>
                                             </div>
                                         </a>
-                                        <a class="dropdown-item" href="/">
+                                        <a class="dropdown-item" href="/add/gardener">
                                             <div class="text-icon-container">
                                                 <div class="icon-container">
                                                     <i class="fa fa-users"></i>

@@ -1,0 +1,29 @@
+.img-preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    object-fit: contain;
+}
+.img-preview-container img {
+    width: 100%;
+}
+
+.image-inp-container{
+    margin: 20px 0;
+}
+.range{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+}
+.range input {
+    width:100%;
+}
+.submit-btn-container{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+
+}
