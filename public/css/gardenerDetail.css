@@ -8,6 +8,20 @@
     background-color:green;
     margin-top: 80px;
 }
+
+.gardener-profile-container .btn {
+    padding: 5px 10px;
+    border-radius:0px;
+    color:white;
+}
+
+.gardener-profile-container .action-update {
+    background-color: black;
+}
+.gardener-profile-container .action-delete {
+    background-color: red;
+}
+
 .profile-pict-container {
     background-color:red;
     display:flex;

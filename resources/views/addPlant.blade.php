@@ -13,7 +13,7 @@
 			<div class="img-preview-container" style="display:none;">
                 <img alt="image-preview" id="img-preview" class="img-preview">
             </div>
-
+			
 			<div class="alert alert-danger"> Error Message </div>
             <div class="image-inp-container">
                 <div class="label">Browse Photos: </div>

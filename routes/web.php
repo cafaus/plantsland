@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+Route::get('/add/plant',  function () {
+    return view('addPlant');
+});
+Route::get('/add/gardener',  function () {
+    return view('addGardener');
+});
 Route::get('/', 'PlantsController@welcome');
 Route::get('/gardener', "GardenersController@index");
 Route::get('/store', "PlantsController@index");
