@@ -90,10 +90,9 @@
 
                 @can('isAdmin')
                     <div class="admin-action-container">
-                    
-                        <form action="/plant/update" class="mr-2">   
-                            <button class="btn action-update"> Update </button>
-                        </form>
+                        <div class="mr-2">   
+                            <a href="/update/plant" class="btn action-update"> Update </a>
+                        </div>
                         
                         <form action="/plant/{{$plant->id}}" enctype="multipart/form-data" method="post">
                             @csrf

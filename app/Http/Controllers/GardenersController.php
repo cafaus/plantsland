@@ -23,6 +23,11 @@ class GardenersController extends Controller
         return view('gardenerDetail', compact('gardener'));
     }
 
+    public function create(){
+        $competences = \App\Competence::all();
+        return view('addGardener', compact('competences'));
+    }
+
     public function destroy(\App\Gardener $gardener){
         if(File::exists(public_path($gardener->image))){
             File::delete(public_path($gardener->image));
