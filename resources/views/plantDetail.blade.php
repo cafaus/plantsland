@@ -63,31 +63,53 @@
                     <div class="detail-text">Type</div>
                     <div class="detail-value">{{$plant->plantCategory->name}}</div>
                 </div>
+                <div class="v-line"></div>
+                <div class="plant-stock">
+                    <div class="detail-text">Stock</div>
+                    <div class="detail-value">{{$plant->stock}}</div>
+                </div>
             </div>
+            
+            
             <div class="plant-footer">
                 <div class="price">Rp{{ number_format( $plant->price , 0, ".", ".") }}</div>
-                <form action="/plantCart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
-                    @csrf
-                    <div class="qty-wrapper">
-                        <div class="icon-container" id="minus">
-                            <span class="fa fa-minus"></span>
-                        </div>
-                        
-                        <input id="quantity"
-                          type="number"
-                          class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
-                          name="quantity"
-                          value="{{ old('quantity') ?? 1}}"
-                          placeholder=""
-                          autocomplete="quantity" autofocus>
-                         
-                        <div class="icon-container" id="plus">
-                            <span class="fa fa-plus"></span>
-                        </div>
+
+                @can('isAdmin')
+                    <div class="admin-action-container">
+                        <form action="">   
+                            <button class="btn"> Update </button>
+                        </form>
+                        <form action="">   
+                            <button clsas="btn"> Delete </button>
+                        </form>
                     </div>
-                   
-                    <button class="btn" type="submit">Add To Cart</button>
-                </form>
+                @endcan
+
+                @can('isMember')
+                    <form action="/plantCart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
+                        @csrf
+                        <div class="qty-wrapper">
+                            <div class="icon-container" id="minus">
+                                <span class="fa fa-minus"></span>
+                            </div>
+                            
+                            <input id="quantity"
+                            type="number"
+                            class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
+                            name="quantity"
+                            value="{{ old('quantity') ?? 1}}"
+                            placeholder=""
+                            autocomplete="quantity" autofocus>
+                            
+                            <div class="icon-container" id="plus">
+                                <span class="fa fa-plus"></span>
+                            </div>
+                        </div>
+                    
+                        <button class="btn" type="submit">Add To Cart</button>
+                    </form>
+                @endcan
+
             </div>
         </div>
        
