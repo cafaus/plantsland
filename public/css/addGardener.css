@@ -25,5 +25,10 @@
     display:flex;
     justify-content:flex-end;
     align-items:center;
-
+}
+.is-invalid-select {
+    border-color:red;
+}
+.is-invalid-select-feedback {
+    display:block;
 }

@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-
 Route::get('/', 'PlantsController@welcome');
 Route::get('/gardener', "GardenersController@index");
 Route::get('/store', "PlantsController@index");
@@ -56,6 +54,13 @@ Route::middleware(['auth'])->group( function () {
 
         Route::get('/add/gardener',  'GardenersController@create');
         Route::delete('/gardener/{gardener}', 'GardenersController@destroy');
+
+        Route::get('/update/gardener',  function () {
+            return view('updateGardener');
+        });
+        Route::get('/update/plant',  function () {
+            return view('updatePlant');
+        });
     });
 } );
 
