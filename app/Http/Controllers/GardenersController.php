@@ -29,55 +29,42 @@ class GardenersController extends Controller
     }
 
     public function store(){
-        //masi salah
-        dd("in development...");
-        $dataInputPortofolio = (int) request()->input('portofolio_count') + 1;
+        
+        $portofolios = request()->file('portfolios');
+        
         $data = request()->validate([
             'competence' => ['required'],
-            'name' => ['required', 'min:5', 'unique:plants,name'],
-            'image' => ['required',],
+            'name' => ['required', 'min:5', 'unique:gardeners,name'],
+            'image' => ['required'],
             'like' => ['required', 'integer', "min:1", "max:100"],
             'experience' => ['required', 'integer', "min:1"],
             'price' => ['required', 'integer', "min:5000"],
-            'stock' => ['required', 'integer', "min:1"],
-            
-            
         ]);
         
-        $inputPortofolios = [];
-        for ($i=0; $i < $dataInputPortofolio; $i++) { 
-            $inputPortofolios[$i] =  request()->validate([
-                "care-title-{$i}" => ['required'],
-                "care-desc-{$i}" => ['required'],
-            ]);
+        $portofoliosPath = [];
+        if(request()->hasFile('portfolios')){
+            foreach ($portofolios as $portofolio) {
+                $imagePath = $portofolio->store('uploads', 'public');
+                array_push($portofoliosPath, $imagePath);
+            }
         }
-        $plantOrigin = new \App\PlantOrigin();
-        $plantOrigin->description = $data['origin'];
-        $plantOrigin->save();
+        $imagePath =request('image')->store('uploads', 'public');
+        $gardener = new \App\Gardener();
+        $gardener->competence_id = $data['competence'];
+        $gardener->name = $data['name'];
+        $gardener->image = 'storage/'.$imagePath;
+        $gardener->likes = $data['like'];
+        $gardener->experience = $data['experience'];
+        $gardener->price_per_day = $data['price'];
+        $gardener->save();
 
-        $imagePath = request('image')->store('uploads', 'public');
-
-        $plant = new \App\Plant();
-        $plant->plant_category_id = $data['type'];
-        $plant->plant_origin_id = $plantOrigin->id;
-        $plant->name = $data['name'];
-        $plant->image = 'storage/'.$imagePath;
-        $plant->price = $data['price'];
-        $plant->height = $data['height'];
-        $plant->pot_size = $data['pot'];
-        $plant->stock = $data['stock'];
-        $plant->description = $data['description'];
-        $plant->save();
-
-        for($i=0; $i < $dataInputPortofolio; $i++){
-            $plantCare = new \App\PlantCare();
-            $plantCare->plant_id = $plant->id;
-            $plantCare->care_title = $inputPortofolios[$i]["care-title-{$i}"];
-            $plantCare->description = $inputPortofolios[$i]["care-desc-{$i}"];
-            $plantCare->save();
+        foreach ($portofoliosPath as $portofolioPath) {
+            $gardenerPortofolio = new \App\GardenerPortofolio();
+            $gardenerPortofolio->gardener_id = $gardener->id;
+            $gardenerPortofolio->image = 'storage/'.$portofolioPath;
+            $gardenerPortofolio->save();
         }
-
-        return redirect()->back()->with('success', 'New stationary has been submited!');
+        return redirect()->back()->with('success', 'New gardener has been submited!');
     }
 
     public function destroy(\App\Gardener $gardener){

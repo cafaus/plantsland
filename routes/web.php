@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group( function () {
         Route::delete('/plant/{plant}', 'PlantsController@destroy');
 
         Route::get('/add/gardener',  'GardenersController@create');
+        Route::post('/add/gardener',  'GardenersController@store');
         Route::delete('/gardener/{gardener}', 'GardenersController@destroy');
 
         Route::get('/update/gardener',  function () {
