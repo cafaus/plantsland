@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Plant;
 use \App\PlantCategory;
+use Illuminate\Support\Facades\File; 
 class PlantsController extends Controller
 {
     public function index(Request $req){
@@ -36,5 +37,21 @@ class PlantsController extends Controller
     public function show(\App\Plant $plant){
         $plants = \App\Plant::all()->take(8);
         return view('plantDetail', compact('plant', 'plants'));
+    }
+
+    public function destroy(\App\Plant $plant){
+        $plantOriginId = $plant->plant_origin_id;
+        if(File::exists(public_path($plant->image))){
+            File::delete(public_path($plant->image));
+        }
+        else{
+            return redirect()->back()->with('alert', 'image file not found!');
+        }
+        $plant->delete();
+        $plantOrigin = \App\PlantOrigin::find($plantOriginId);
+        if($plantOrigin){
+            $plantOrigin->delete();
+        }
+        return redirect('/store');
     }
 }
