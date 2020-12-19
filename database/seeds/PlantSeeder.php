@@ -77,7 +77,7 @@ class PlantSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
-            [//belom
+            [
                 'plant_category_id' => 3,
                 'plant_origin_id' => 6,
                 'name' => 'Bonsai',
