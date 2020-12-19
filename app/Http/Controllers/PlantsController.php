@@ -106,14 +106,12 @@ class PlantsController extends Controller
             'type' => ['required'],
             'origin' => ['required'],
             'name' => ['required', 'min:5', "unique:plants,name,{$plant->id}"],
-            'image' => ['required'],
             'price' => ['required', 'integer', "min:5000"],
             'height' => ['required', 'integer', "min:1"],
             'pot' => ['required', 'integer', "min:1"],
             'stock' => ['required', 'integer', "min:1"],
             'description' => ['required', 'min:10'],
         ]);
-        
         $inputCares = [];
         for ($i=0; $i < $dataInputCaresNum; $i++) { 
             $inputCares[$i] =  request()->validate([
@@ -141,7 +139,7 @@ class PlantsController extends Controller
             $plantCare->description = $inputCares[$i]["care-desc-{$i}"];
             $plantCare->save();
         }
-        dd("hai");
+        
         return redirect("/store/{$plant->id}");
     }
 
