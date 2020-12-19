@@ -46,12 +46,58 @@ class PlantsController extends Controller
 
     public function store(){
         
-        dd("in progress");
+        $dataInputCaresNum = (int) request()->input('care_count') + 1;
+        $data = request()->validate([
+            'type' => ['required'],
+            'origin' => ['required'],
+            'name' => ['required', 'min:5', 'unique:plants,name'],
+            'image' => ['required',],
+            'price' => ['required', 'integer', "min:5000"],
+            'height' => ['required', 'integer', "min:1"],
+            'pot' => ['required', 'integer', "min:1"],
+            'stock' => ['required', 'integer', "min:1"],
+            'description' => ['required', 'min:10'],
+        ]);
         
+        $inputCares = [];
+        for ($i=0; $i < $dataInputCaresNum; $i++) { 
+            $inputCares[$i] =  request()->validate([
+                "care-title-{$i}" => ['required'],
+                "care-desc-{$i}" => ['required'],
+            ]);
+        }
+        $plantOrigin = new \App\PlantOrigin();
+        $plantOrigin->description = $data['origin'];
+        $plantOrigin->save();
+
+        $imagePath = request('image')->store('uploads', 'public');
+
+        $plant = new \App\Plant();
+        $plant->plant_category_id = $data['type'];
+        $plant->plant_origin_id = $plantOrigin->id;
+        $plant->name = $data['name'];
+        $plant->image = 'storage/'.$imagePath;
+        $plant->price = $data['price'];
+        $plant->height = $data['height'];
+        $plant->pot_size = $data['pot'];
+        $plant->stock = $data['stock'];
+        $plant->description = $data['description'];
+        $plant->save();
+
+        for($i=0; $i < $dataInputCaresNum; $i++){
+            $plantCare = new \App\PlantCare();
+            $plantCare->plant_id = $plant->id;
+            $plantCare->care_title = $inputCares[$i]["care-title-{$i}"];
+            $plantCare->description = $inputCares[$i]["care-desc-{$i}"];
+            $plantCare->save();
+        }
+
+        return redirect()->back()->with('success', 'New stationary has been submited!');
     }
 
     public function destroy(\App\Plant $plant){
         $plantOriginId = $plant->plant_origin_id;
+        
         if(File::exists(public_path($plant->image))){
             File::delete(public_path($plant->image));
         }

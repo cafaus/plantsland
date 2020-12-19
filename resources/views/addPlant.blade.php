@@ -13,8 +13,12 @@
 			<div class="img-preview-container" style="display:none;">
                 <img alt="image-preview" id="img-preview" class="img-preview">
             </div>
-			
-			<div class="alert alert-danger"> Error Message </div>
+			@if (session('alert'))
+				<div class="alert alert-danger"> {{ session('alert') }} </div>
+			@endif
+			@if (session('success'))
+        		<div class="alert alert-success"> {{ session('success') }} </div>
+    		@endif
             <div class="image-inp-container">
                 <div class="label">Browse Photos: </div>
 				<input type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" id="image" name="image" accept="image/*" onchange="loadFile(event)">
@@ -181,7 +185,7 @@
 					<div class="form-group col-md-4">
 						<label>Care Title - {{$startId+1}}</label>
 						<input id="care-title-{{$startId}}"
-						   type="number"
+						   type="text"
                            class="form-control{{ $errors->has("care-title-{$startId}") ? ' is-invalid' : '' }}"
                            name="care-title-{{$startId}}"
                            value="{{ old("care-title-{$startId}") }}"
@@ -198,7 +202,7 @@
 					<div class="form-group col-md-8">
 						<label>Care Description  - {{$startId+1}}</label>
 						<input id="care-desc-{{$startId}}"
-						   type="number"
+						   type="text"
                            class="form-control{{ $errors->has("care-desc-{$startId}") ? ' is-invalid' : '' }}"
                            name="care-desc-{{$startId}}"
                            value="{{ old("care-desc-{$startId}") }}"
