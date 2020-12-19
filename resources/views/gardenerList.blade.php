@@ -5,7 +5,7 @@
 @endsection
 
 @section('nav-search')
-<form aaction="/search" method="GET" class="nav-item search-bar" id="search-form">
+<form action="/store" method="GET" class="nav-item search-bar" id="search-form">
     <input class="search-input" type="text" name="name" placeholder="Search Gardener Name...">
     <button id="search-icon"><i class="fa fa-search"></i></button>
 </form>
