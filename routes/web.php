@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/add/plant',  function () {
-    return view('addPlant');
-});
-Route::get('/add/gardener',  function () {
-    return view('addGardener');
-});
+
+
 Route::get('/', 'PlantsController@welcome');
 Route::get('/gardener', "GardenersController@index");
 Route::get('/store', "PlantsController@index");
@@ -49,6 +45,7 @@ Route::middleware(['auth'])->group( function () {
     });
     //role admin
     Route::middleware(['role:admin'])->group( function(){
+        Route::get('/add/gardener',  'GardenersController@create');
         Route::get('/add/plant',  'PlantsController@create');
         Route::post('/add/plant',  'PlantsController@store');
         Route::delete('/plant/{plant}', 'PlantsController@destroy');
