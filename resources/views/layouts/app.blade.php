@@ -51,9 +51,9 @@
                         <li class="nav-item mr-3">
                             <a class="nav-link" href="/store">Store</a>
                         </li>
-                        <li class="nav-item mr-3">
+                        {{-- <li class="nav-item mr-3">
                             <a class="nav-link" href="#">Forum</a>
-                        </li>
+                        </li> --}}
                         @yield('nav-search')
                         <li class="nav-item">
                             <div class="v-line" style="margin: 0 20px;"></div>
