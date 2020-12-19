@@ -95,6 +95,12 @@ class PlantsController extends Controller
         return redirect()->back()->with('success', 'New stationary has been submited!');
     }
 
+    public function edit(\App\Plant $plant){
+        $plantCatagories = \App\PlantCategory::all();
+        return view('editPlant', compact('plantCatagories','plant'));
+    }
+
+
     public function destroy(\App\Plant $plant){
         $plantOriginId = $plant->plant_origin_id;
         

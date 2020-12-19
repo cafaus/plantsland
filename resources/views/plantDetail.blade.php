@@ -91,7 +91,7 @@
                 @can('isAdmin')
                     <div class="admin-action-container">
                     
-                        <form action="" class="mr-2">   
+                        <form action="/edit/plant/{{$plant->id}}" class="mr-2">   
                             <button class="btn action-update"> Update </button>
                         </form>
                         
