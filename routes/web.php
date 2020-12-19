@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'PlantsController@welcome');
+Route::get('/gardener', "GardenersController@index");
+Route::get('/store', "PlantsController@index");
+Route::get('/store/{plant}', "PlantsController@show");
+Route::get('/gardener/{gardener}', "GardenersController@show");
+
 // harus login
 Route::middleware(['auth'])->group( function () { 
     // role admin/member
@@ -24,12 +28,17 @@ Route::middleware(['auth'])->group( function () {
     });
     // role member
     Route::middleware(['role:member'])->group( function(){
-        Route::get('/cart', function() {
-            return view('cart');
-        });
-        Route::get('/history', function() {
-            return view('history');
-        });
+        Route::get('/cart', "PlantCartsController@index");
+        Route::get('/cart/checkout', 'PlantCartsController@checkout');
+
+        Route::post('/plantCart/{plant}', "PlantCartsController@store");
+        Route::delete('/plantCart/{plantCart}', 'PlantCartsController@destroy');
+        Route::patch('/plantCart/{plantCart}', 'PlantCartsController@update');
+
+        Route::post('/gardenerCart/{gardener}', "GardenerCartsController@store");
+        Route::delete('/gardenerCart/{gardenerCart}', 'GardenerCartsController@destroy');
+        Route::patch('/gardenerCart/{gardenerCart}', 'GardenerCartsController@update');
+        Route::get('/history', 'TransactionHistoriesController@index');
     });
     //role admin
     Route::middleware(['role:admin'])->group( function(){
@@ -37,11 +46,7 @@ Route::middleware(['auth'])->group( function () {
     });
 } );
 
-Route::get('/gardener', "GardenersController@index");
-Route::get('/store', "PlantsController@index");
-Route::get('/store/{plant}', "PlantsController@show");
 
-Route::get('/gardener/{gardener}', "GardenersController@show");
 
 
 Auth::routes();

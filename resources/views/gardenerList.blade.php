@@ -48,7 +48,7 @@
 @foreach ($gardeners as $gardener)
 <a class="gardener-card shadow" href="/gardener/{{$gardener->id}}">
     <div class="pict-container">
-        <img src="{{ asset($gardener->image) }}" alt="portfolio">
+        <img src="{{ asset($gardener->image) }}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/people.png') }}';">
     </div>
     <div class="detail-container">
         <div class="name line-clamp-1">{{$gardener->name}}</div>
@@ -66,7 +66,7 @@
         <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
     </div>
     <div class="portfolio-container">
-        <img src="{{ asset($gardener->gardenerPortofolios[0]->image) }}" alt="portfolio">
+        <img src="{{ asset($gardener->gardenerPortofolios[0]->image) }}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
     </div>
 </a>
 @endforeach
