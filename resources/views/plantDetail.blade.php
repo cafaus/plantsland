@@ -12,15 +12,22 @@
         array_unshift($links, 'Home');
         $links[count($links)-1] = $plant->name;
     ?>
+
     @if (count($links) > 1)
         @foreach($links as $segment)
-            <a href="{{ $segment }}" class="custom-breadcrumb-item">{{$segment}}</a>
+            <?php 
+                $name = $segment;
+                $href = $i == 0 ? "/" : "/" . $segment; 
+                if ( $i == count($links)-1 ) $href = $segment;
+            ?>
+            <a href="{{$href}}" class="custom-breadcrumb-item">{{$name}}</a>
             @if ($i < count($links) - 1)
                 <div class="fa fa-angle-right separator"></div>
             @endif  
             <?php $i++ ?>
         @endforeach
     @endif
+
 </div>
 @endsection
 
