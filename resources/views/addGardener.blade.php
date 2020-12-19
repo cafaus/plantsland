@@ -62,8 +62,19 @@
                     @endif
 				</div>
 				
-				
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-3">
+					<label>Competence</label>
+					<select class="form-control {{ $errors->has('competence') ? 'is-invalid-select' : ''}}">
+						<option value="">Open this select menu</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+                    @if ( $errors->has('competence') )
+    					<div class="invalid-feedback is-invalid-select-feedback">{{ $errors->first('competence') }}</div>
+                    @endif
+				</div>
+				<div class="form-group col-md-3">
 					<label>Price /Day</label>
 					<input 
                         type="number" 
@@ -76,7 +87,28 @@
                     @endif
 				</div>
 			</div>
-			
+            
+
+            <table class="table table-bordered" id="portfolios-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Portfolios</th>
+                    </tr>
+                </thead>
+                <tbody id="portfolios-images">
+                    
+                </tbody>
+            </table>
+
+			@error('portfolios')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="image-inp-container">
+                <div class="label">Browse Portfolios: </div>
+                <input required type="file"  name="portfolios[]" multiple onchange="loadMultipleFile(event)" id="portfolios-input">
+            </div>
+
   			<div class="submit-btn-container mb-5"> 
 				<button class="btn">Add New Gardener</button>
 			</div>
@@ -88,10 +120,16 @@
 
 @section('script')
 <script>
+    function htmlToElement(html) {
+		var template = document.createElement('template');
+		html = html.trim(); // Never return a text node of whitespace as the result
+		template.innerHTML = html;
+		return template.content.firstChild;
+	}
 	const loadFile = function(event) {
 		const reader = new FileReader();
 		const imgContainer = document.getElementsByClassName('img-preview-container')[0];
-		imgContainer.style.display = 'block';
+		imgContainer.style.display = 'none';
 
 		reader.onload = function() {
 			var output = document.getElementById('img-preview');
@@ -99,6 +137,33 @@
 		};
 		reader.readAsDataURL(event.target.files[0]);
 	};
+
+    const loadMultipleFile = function( event ) {
+        const reader = new FileReader();
+        const portfoliosContainer = document.getElementById('portfolios-images');
+        if ( portfoliosContainer.hasChildNodes() ) portfoliosContainer.innerHTML = "";
+        const files = event.srcElement.files;
+        let i = 1;
+        Array.from(files).forEach((file) => {
+            const imgId = `portfolio-image-${i}`;
+            const img = htmlToElement(`
+                <tr>
+                    <td>${i}</td>
+                    <td> 
+                        <img style="height:200px; width:200px; object-fit:cover;" id="${imgId}" />
+                    </td>
+                </tr>
+            `);
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                document.getElementById(imgId).src = reader.result;
+            }
+            reader.readAsDataURL(file);
+            document.getElementById('portfolios-table').style.display = "table";
+            portfoliosContainer.append( img );
+            i++;
+        });
+    }
 
 </script>
 <script type="text/javascript">
