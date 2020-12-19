@@ -74,7 +74,7 @@
                 <form action="/gardener/{{$gardener->id}}" enctype="multipart/form-data" method="post">
                     @csrf
                     @method("DELETE")
-                        <button class="btn action-delete"> Delete </button>
+                    <button class="btn action-delete"> Delete </button>
                 </form>  
             </div>
         @endcan
