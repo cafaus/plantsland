@@ -38,7 +38,7 @@ class PlantsController extends Controller
         $plants = \App\Plant::all()->take(8);
         return view('plantDetail', compact('plant', 'plants'));
     }
-
+    
     public function destroy(\App\Plant $plant){
         $plantOriginId = $plant->plant_origin_id;
         if(File::exists(public_path($plant->image))){

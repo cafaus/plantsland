@@ -65,19 +65,33 @@
             </div>
         </div>
         <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
-        <form action="/gardenerCart/{{$gardener->id}}" enctype="multipart/form-data" method="post" class="gardener-cart mt-2">
-            @csrf
-            <input id="rentDays"
-                type="number"
-                class="{{ $errors->has('rentDays') ? ' is-invalid' : '' }}"
-                name="rentDays"
-                value="{{ old('rentDays') ?? 1}}"
-                placeholder="days"
-                autocomplete="rentDays" autofocus
-            >
-            <button type="submit" class="btn">Make Appointment</button>
-        </form>
-        
+        @can('isAdmin')
+            <div class="d-flex">
+                <form action="" class="mr-2">   
+                    <button class="btn action-update"> Update </button>
+                </form>
+                        
+                <form action="/gardener/{{$gardener->id}}" enctype="multipart/form-data" method="post">
+                    @csrf
+                    @method("DELETE")
+                        <button class="btn action-delete"> Delete </button>
+                </form>  
+            </div>
+        @endcan
+        @can('isMember')
+            <form action="/gardenerCart/{{$gardener->id}}" enctype="multipart/form-data" method="post" class="gardener-cart mt-2">
+                @csrf
+                <input id="rentDays"
+                    type="number"
+                    class="{{ $errors->has('rentDays') ? ' is-invalid' : '' }}"
+                    name="rentDays"
+                    value="{{ old('rentDays') ?? 1}}"
+                    placeholder="days"
+                    autocomplete="rentDays" autofocus
+                >
+                <button type="submit" class="btn">Make Appointment</button>
+            </form>
+        @endcan
     </div>
 </div>
 
