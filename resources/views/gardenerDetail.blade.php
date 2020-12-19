@@ -67,9 +67,9 @@
         <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
         @can('isAdmin')
             <div class="d-flex">
-                <form action="/gardener/update" class="mr-2">   
-                    <button class="btn action-update"> Update </button>
-                </form>
+                <div class="mr-2">   
+                    <a href="/update/gardener" class="btn action-update"> Update </a>
+                </div>
                         
                 <form action="/gardener/{{$gardener->id}}" enctype="multipart/form-data" method="post">
                     @csrf

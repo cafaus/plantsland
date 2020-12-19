@@ -8,62 +8,166 @@
 <div class="custom-container">
 	<div class="container">
 		<div class="title"> Add New Plant </div>
-		<form class="mt-2">
+		<form class="mt-2" action="/add/plant" enctype="multipart/form-data" method="post">
+			@csrf
 			<div class="img-preview-container" style="display:none;">
                 <img alt="image-preview" id="img-preview" class="img-preview">
             </div>
-			
-			<div class="alert alert-danger"> Error Message </div>
+			@if (session('alert'))
+				<div class="alert alert-danger"> {{ session('alert') }} </div>
+			@endif
+			@if (session('success'))
+        		<div class="alert alert-success"> {{ session('success') }} </div>
+    		@endif
             <div class="image-inp-container">
                 <div class="label">Browse Photos: </div>
-                <input type="file" name="image" accept="image/*" onchange="loadFile(event)">
+				<input type="file" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" id="image" name="image" accept="image/*" onchange="loadFile(event)">
+				@if ($errors->has('image'))
+					<span class="invalid-feedback" role="alert">
+					<strong>{{ $errors->first('image') }}</strong>
+					</span>
+				@endif
             </div>
 
 
-			<div class="form-group">
-				<label>Name</label>
-				<input type="text" class="form-control is-invalid" placeholder="Bekicot Berkodok">
-				<div class="invalid-feedback">error</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Name</label>
+					<input id="name"
+							type="text"
+							class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+							name="name"
+							value="{{ old('name') }}"
+							placeholder="Name"
+							autocomplete="name" autofocus>
+
+					@if ($errors->has('name'))
+						<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('name') }}</strong>
+						</span>
+					@endif
+				</div>
+
+				<div class="form-group col-md-6">
+					<label>Price</label>
+					<input id="price"
+							type="number"
+							class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
+							name="price"
+							value="{{ old('price') }}"
+							placeholder="Price"
+							autocomplete="price" autofocus>
+
+					@if ($errors->has('price'))
+						<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('price') }}</strong>
+						</span>
+					@endif
+				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label>Description</label>
-					<textarea class="form-control is-invalid" aria-label="With textarea"></textarea>
-					<div class="invalid-feedback">error</div>
+					<textarea id="description"
+						   aria-label="With textarea"
+                           class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
+                           name="description"
+                           value="{{ old('description') }}"
+                           placeholder="Description"
+						   autocomplete="description" autofocus>
+					</textarea>
+
+					@if ($errors->has('description'))
+						<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('description') }}</strong>
+						</span>
+					@endif
+					
 				</div>
 
 				<div class="form-group col-md-6">
 					<label>Origin</label>
-					<textarea class="form-control is-invalid" aria-label="With textarea"></textarea>
-					<div class="invalid-feedback">error</div>
+					<textarea id="origin"
+						   aria-label="With textarea"
+                           class="form-control{{ $errors->has('origin') ? ' is-invalid' : '' }}"
+                           name="origin"
+                           value="{{ old('origin') }}"
+                           placeholder="Origin"
+						   autocomplete="origin" autofocus>
+					</textarea>
+
+					@if ($errors->has('origin'))
+						<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('origin') }}</strong>
+						</span>
+					@endif
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-3">
 					<label>Height (cm)</label>
-					<input type="number" class="form-control is-invalid" placeholder="120">
-					<div class="invalid-feedback">error</div>
+					<input id="height"
+							type="number"
+                           class="form-control{{ $errors->has('height') ? ' is-invalid' : '' }}"
+                           name="height"
+                           value="{{ old('height') }}"
+                           placeholder="Height"
+						   autocomplete="height" autofocus>
+
+					@if ($errors->has('height'))
+						<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('height') }}</strong>
+						</span>
+					@endif
 				</div>
 				<div class="form-group col-md-3">
 					<label>Pot (cm)</label>
-					<input type="number" class="form-control is-invalid" placeholder="25">
-					<div class="invalid-feedback">error</div>
+					<input id="pot"
+						   type="number"
+                           class="form-control{{ $errors->has('pot') ? ' is-invalid' : '' }}"
+                           name="pot"
+                           value="{{ old('pot') }}"
+                           placeholder="Pot"
+						   autocomplete="pot" autofocus>
+
+					@if ($errors->has('pot'))
+						<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('pot') }}</strong>
+						</span>
+					@endif
 				</div>
 				<div class="form-group col-md-3">
 					<label>Type</label>
-					<select class="form-control is-invalid-select">
+					<select class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" name="type" id="type">
 						<option value="">Open this select menu</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+						@foreach ($plantCatagories as $pc)
+							<option value="{{ $pc->id }}" > 
+								{{ $pc->name }} 
+							</option>
+						@endforeach
 					</select>
-					<div class="invalid-feedback is-invalid-select-feedback">error</div>
+					@if ($errors->has('type'))
+                    <span class="invalid-feedback" role="alert">
+                       <strong>{{ $errors->first('type') }}</strong>
+                    </span>
+                	@endif
 				</div>
 				
 				<div class="form-group col-md-3">
 					<label>Stock</label>
-					<input type="number" class="form-control is-invalid" placeholder="Bekicot Berkodok">
-					<div class="invalid-feedback is-invalid-select-feedback">error</div>
+					<input id="stock"
+						   type="number"
+                           class="form-control{{ $errors->has('stock') ? ' is-invalid' : '' }}"
+                           name="stock"
+                           value="{{ old('stock') }}"
+                           placeholder="Stock"
+						   autocomplete="stock" autofocus>
+
+					@if ($errors->has('stock'))
+						<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('stock') }}</strong>
+						</span>
+					@endif
 				</div>
 			</div>
 			<div class="cares-top-container"> 
@@ -75,22 +179,46 @@
 			</div>
 			<div id="cares-container">
 				<?php $startId = 0;?>
-				<input type="hidden" value="{{$startId}}" id="care_count">
+				<input type="hidden" value="{{$startId}}" id="care_count"  name="care_count">
 
 				<div class="form-row" id="cares-form-{{$startId}}">
 					<div class="form-group col-md-4">
 						<label>Care Title - {{$startId+1}}</label>
-						<input name="care-title-{{$startId}}" type="text" class="form-control" placeholder="Need Love">
+						<input id="care-title-{{$startId}}"
+						   type="text"
+                           class="form-control{{ $errors->has("care-title-{$startId}") ? ' is-invalid' : '' }}"
+                           name="care-title-{{$startId}}"
+                           value="{{ old("care-title-{$startId}") }}"
+                           placeholder="Need Love"
+						   autocomplete="care-title-{{$startId}}" autofocus>
+
+						@if ($errors->has("care-title-{$startId}"))
+							<span class="invalid-feedback" role="alert">
+							<strong>{{ $errors->first("care-title-{$startId}") }}</strong>
+							</span>
+						@endif
 					</div>
 
 					<div class="form-group col-md-8">
 						<label>Care Description  - {{$startId+1}}</label>
-						<input name="care-desc-{{$startId}}" type="text" class="form-control" placeholder="You need to take care this plant with love">
+						<input id="care-desc-{{$startId}}"
+						   type="text"
+                           class="form-control{{ $errors->has("care-desc-{$startId}") ? ' is-invalid' : '' }}"
+                           name="care-desc-{{$startId}}"
+                           value="{{ old("care-desc-{$startId}") }}"
+                           placeholder="You need to take care this plant with love"
+						   autocomplete="care-desc-{{$startId}}" autofocus>
+
+						@if ($errors->has("care-desc-{$startId}"))
+							<span class="invalid-feedback" role="alert">
+							<strong>{{ $errors->first("care-desc-{$startId}") }}</strong>
+							</span>
+						@endif
 					</div>
 				</div>
 			</div>
   			<div class="submit-btn-container mb-5"> 
-				<button class="btn">Add Plant</button>
+				<button class="btn" name="action" value="{{$startId}}">Add Plant</button>
 			</div>
 		</form>
 	 </div>
