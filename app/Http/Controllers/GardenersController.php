@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\Gardener;
 class GardenersController extends Controller
 {
-    public function index(){
-        $gardeners = \App\Gardener::all();
-        
+    public function index( Request $req ){
+        $params = $req->query();
+        $gardeners = [];
+        if ( $req->has('name') ) {
+            $gardeners = Gardener::where('name', 'like' , '%' . $params['name'] . '%')->get();
+        } else {
+            $gardeners = Gardener::all();
+        }
         return view('gardenerList', compact('gardeners'));
     }
 

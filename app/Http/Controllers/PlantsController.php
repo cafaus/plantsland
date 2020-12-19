@@ -7,19 +7,7 @@ use \App\Plant;
 use \App\PlantCategory;
 class PlantsController extends Controller
 {
-    public function index(){
-        $plants = \App\Plant::all();
-        return view('storeList', compact('plants'));
-    }
-    public function welcome() {
-        $plants = \App\Plant::all()->take(5);
-        return view('welcome',compact('plants'));
-    }
-    public function show(\App\Plant $plant){
-        $plants = \App\Plant::all()->take(8);
-        return view('plantDetail', compact('plant', 'plants'));
-    }
-    public function search( Request $req ) {
+    public function index(Request $req){
         $params = $req->query();
         $plants = [];
         if ( $req->has('name') ) {
@@ -31,5 +19,22 @@ class PlantsController extends Controller
             $plants = Plant::all();
         }
         return view('storeList', compact('plants'));
+    }
+    public function welcome() {
+        $categories = PlantCategory::all();
+        $plants = [];
+        $categoryIds = [];
+
+        foreach( $categories as $category ) {
+            if( count($plants) >= 4 ) break;
+            $plant = Plant::where('plant_category_id', $category->id)->first();
+            array_push( $plants, $plant );
+        }
+        
+        return view('welcome',compact('plants'));
+    }
+    public function show(\App\Plant $plant){
+        $plants = \App\Plant::all()->take(8);
+        return view('plantDetail', compact('plant', 'plants'));
     }
 }
