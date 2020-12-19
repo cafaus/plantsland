@@ -76,12 +76,15 @@
 
                 @can('isAdmin')
                     <div class="admin-action-container">
-                        <form action="">   
-                            <button class="btn"> Update </button>
+                    
+                        <form action="" class="mr-2">   
+                            <button class="btn action-update"> Update </button>
                         </form>
+                        
                         <form action="">   
-                            <button clsas="btn"> Delete </button>
+                            <button class="btn action-delete"> Delete </button>
                         </form>
+                        
                     </div>
                 @endcan
 

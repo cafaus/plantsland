@@ -278,7 +278,7 @@ html, body {
 
 /* START OF BUTTON STYLES */
 .btn {
-    background-color:orange;
+    background-color:orange ;
     padding: 10px 20px;
     color:white;
     font-family: sans-serif;
