@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="{{ asset('css/storeList.css') }}">
 @endsection
 
+@section('nav-search')
+<form aaction="/search" method="GET" class="nav-item search-bar" id="search-form">
+    <input class="search-input" type="text" name="name" placeholder="Search Plants...">
+    <button id="search-icon"><i class="fa fa-search"></i></button>
+</form>
+@endsection
+
 @section('breadcrumb')
 <div class="custom-breadcrumb">
     <?php 

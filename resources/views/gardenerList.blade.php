@@ -24,6 +24,7 @@
 </div>
 @endsection
 
+
 @section('filter-box')
 <div class="filter-box shadow">
     <?php $count = 4 ?>

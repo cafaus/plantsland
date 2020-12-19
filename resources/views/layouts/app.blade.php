@@ -54,10 +54,7 @@
                         <li class="nav-item mr-3">
                             <a class="nav-link" href="#">Forum</a>
                         </li>
-                        <li class="nav-item search-bar">
-                            <input class="search-input" type="text" placeholder="Search...">
-                            <a href="#" id="search-icon"><i class="fa fa-search"></i></a>
-                        </li>
+                        @yield('nav-search')
                         <li class="nav-item">
                             <div class="v-line" style="margin: 0 20px;"></div>
                         </li>
@@ -111,8 +108,13 @@
             const searchInput = document.getElementsByClassName('search-input')[0];
 
             searchIcon.onclick = function ( e ) { 
-                searchInput.style.width = "100%";
-                searchInput.style.opacity = 1;
+                e.preventDefault();
+                if ( searchInput.style.width == "100%" ) {
+                    document.getElementById('search-form').submit();
+                } else {
+                    searchInput.style.width = "100%";
+                    searchInput.style.opacity = 1;
+                }
                 e.stopPropagation();
             }
             document.onclick = function ( e ) { 
