@@ -75,6 +75,14 @@ class GardenersController extends Controller
             return redirect()->back()->with('alert', 'image file not found!');
         }
         
+        foreach ($gardener->gardenerPortofolios as $portofolio) {
+            if(File::exists(public_path($portofolio->image))){
+                File::delete(public_path($portofolio->image));
+            }
+            else{
+                return redirect()->back()->with('alert', 'portofolio image file not found!');
+            }
+        }
         $gardener->delete();
         
         return redirect('/gardener');
