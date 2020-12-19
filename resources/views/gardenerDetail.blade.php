@@ -67,7 +67,7 @@
         <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
         @can('isAdmin')
             <div class="d-flex">
-                <form action="" class="mr-2">   
+                <form action="/gardener/update" class="mr-2">   
                     <button class="btn action-update"> Update </button>
                 </form>
                         

@@ -20,6 +20,12 @@ Route::get('/add/plant',  function () {
 Route::get('/add/gardener',  function () {
     return view('addGardener');
 });
+Route::get('/gardener/update',  function () {
+    return view('updateGardener');
+});
+Route::get('/plant/update',  function () {
+    return view('updatePlant');
+});
 Route::get('/', 'PlantsController@welcome');
 Route::get('/gardener', "GardenersController@index");
 Route::get('/store', "PlantsController@index");
