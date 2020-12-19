@@ -88,7 +88,9 @@
                             <button class="btn action-update"> Update </button>
                         </form>
                         
-                        <form action="">   
+                        <form action="/plant/{{$plant->id}}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            @method("DELETE")
                             <button class="btn action-delete"> Delete </button>
                         </form>
                         

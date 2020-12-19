@@ -43,7 +43,8 @@ Route::middleware(['auth'])->group( function () {
     });
     //role admin
     Route::middleware(['role:admin'])->group( function(){
-        
+        Route::delete('/plant/{plant}', 'PlantsController@destroy');
+        Route::delete('/gardener/{gardener}', 'GardenersController@destroy');
     });
 } );
 
