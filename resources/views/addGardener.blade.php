@@ -8,7 +8,8 @@
 <div class="custom-container">
 	<div class="container">
 		<div class="title"> Add New Gardener </div>
-		<form class="mt-2">
+        <form class="mt-2" action="/add/gardener" enctype="multipart/form-data" method="post">
+            @csrf
 			<div class="img-preview-container" style="display:none;">
                 <img alt="image-preview" id="img-preview" class="img-preview">
             </div>
@@ -16,6 +17,9 @@
 			@error('image')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            @if (session('success'))
+        		<div class="alert alert-success"> {{ session('success') }} </div>
+    		@endif
             <div class="image-inp-container">
                 <div class="label">Browse Photos: </div>
                 <input type="file" name="image" accept="image/*" onchange="loadFile(event)">
@@ -24,7 +28,12 @@
 
 			<div class="form-group">
 				<label>Name</label>
-				<input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Bekicot Berkodok">
+                <input 
+                    id="name" 
+                    name="name" 
+                    type="text" 
+                    class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" 
+                    placeholder="Name">
 				@if ($errors->has('name'))
                     <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                 @endif
@@ -35,11 +44,12 @@
 					<label id="slider-value">Likes: 50%</label>
                     <div class="range form-control {{ $errors->has('like') ? 'is-invalid' : '' }}">
                         <input 
+                            id="like" 
+                            name="like"
                             type="range" 
                             class="form-range" 
                             min="0" max="100"
                             value="{{ old('like') ?? 50 }}"
-                            name="like"
                             onchange="showSliderValue(this.value);"
                         />
                     </div>
@@ -50,7 +60,9 @@
 
 				<div class="form-group col-md-3">
 					<label>Experience (Year)</label>
-					<input 
+                    <input
+                        id="experience" 
+                        name="experience" 
                         type="number" 
                         class="form-control {{ $errors->has('experience') ? 'is-invalid' : ''}}" 
                         placeholder="25"
@@ -64,11 +76,18 @@
 				
 				<div class="form-group col-md-3">
 					<label>Competence</label>
-					<select class="form-control {{ $errors->has('competence') ? 'is-invalid-select' : ''}}">
-						<option value="">Open this select menu</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+                    <select 
+                        id="competence" 
+                        name="competence"  
+                        class="form-control {{ $errors->has('competence') ? 'is-invalid-select' : ''}}"
+                    >
+                        <option value="">Open this select menu</option>
+                        @foreach ($competences as $competence)
+                        
+							<option value="{{ $competence->id }}" > 
+								{{ $competence->name }} 
+							</option>
+						@endforeach
 					</select>
                     @if ( $errors->has('competence') )
     					<div class="invalid-feedback is-invalid-select-feedback">{{ $errors->first('competence') }}</div>
@@ -76,7 +95,9 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label>Price /Day</label>
-					<input 
+                    <input 
+                        id="price" 
+                        name="price" 
                         type="number" 
                         class="form-control {{ $errors->has('price') ? 'is-invalid' : ''}}" 
                         name="price"

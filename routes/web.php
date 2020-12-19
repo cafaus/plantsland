@@ -43,10 +43,17 @@ Route::middleware(['auth'])->group( function () {
     });
     //role admin
     Route::middleware(['role:admin'])->group( function(){
-        Route::get('/add/gardener',  'GardenersController@create');
+        
+
         Route::get('/add/plant',  'PlantsController@create');
         Route::post('/add/plant',  'PlantsController@store');
+
+        Route::get('/edit/plant/{plant}',  'PlantsController@edit');
+        Route::patch('/plant/{plant}', 'PlantsController@update');
         Route::delete('/plant/{plant}', 'PlantsController@destroy');
+
+        Route::get('/add/gardener',  'GardenersController@create');
+        Route::post('/add/gardener',  'GardenersController@store');
         Route::delete('/gardener/{gardener}', 'GardenersController@destroy');
 
         Route::get('/update/gardener',  function () {
