@@ -83,7 +83,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @can('isAdmin')
-                                        <a class="dropdown-item" href="/"> 
+                                        <a class="dropdown-item" href="/add/plant"> 
                                             <div class="text-icon-container">
                                                 <div class="icon-container">
                                                     <i class="fa fa-leaf"></i>
@@ -99,7 +99,6 @@
                                                 <div> Add Gardener </div>
                                             </div>
                                         </a>
-                                        
                                     @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
