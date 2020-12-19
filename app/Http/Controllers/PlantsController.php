@@ -39,6 +39,17 @@ class PlantsController extends Controller
         return view('plantDetail', compact('plant', 'plants'));
     }
     
+    public function create(){
+        $plantCatagories = \App\PlantCategory::all();
+        return view('addPlant', compact('plantCatagories'));
+    }
+
+    public function store(){
+        
+        dd("in progress");
+        
+    }
+
     public function destroy(\App\Plant $plant){
         $plantOriginId = $plant->plant_origin_id;
         if(File::exists(public_path($plant->image))){
