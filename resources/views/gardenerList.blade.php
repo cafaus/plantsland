@@ -12,16 +12,20 @@
 @endsection
 
 @section('breadcrumb')
-<?php $segments = ''; ?>
 <div class="custom-breadcrumb">
     <?php 
         $i = 0;
         $links = Request::segments();
         array_unshift($links, 'Home');
     ?>
+
     @if (count($links) > 1)
         @foreach($links as $segment)
-            <a href="{{ $segment }}" class="custom-breadcrumb-item">{{$segment}}</a>
+            <?php 
+                $name = $segment;
+                $href = $i == 0 ? "/" : "/" . $segment; 
+            ?>
+            <a href="{{$href}}" class="custom-breadcrumb-item">{{$name}}</a>
             @if ($i < count($links) - 1)
                 <div class="fa fa-angle-right separator"></div>
             @endif  

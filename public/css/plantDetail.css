@@ -210,6 +210,16 @@ input[type=number] {
 
 .admin-action-container {
     display: flex;
-    background-color:red;
-    
+}
+.admin-action-container .btn {
+    padding: 5px 10px;
+    border-radius:0px;
+    color:white;
+}
+
+.admin-action-container .action-update {
+    background-color: black;
+}
+.admin-action-container .action-delete {
+    background-color: red;
 }

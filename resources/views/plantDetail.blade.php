@@ -12,15 +12,22 @@
         array_unshift($links, 'Home');
         $links[count($links)-1] = $plant->name;
     ?>
+
     @if (count($links) > 1)
         @foreach($links as $segment)
-            <a href="{{ $segment }}" class="custom-breadcrumb-item">{{$segment}}</a>
+            <?php 
+                $name = $segment;
+                $href = $i == 0 ? "/" : "/" . $segment; 
+                if ( $i == count($links)-1 ) $href = $segment;
+            ?>
+            <a href="{{$href}}" class="custom-breadcrumb-item">{{$name}}</a>
             @if ($i < count($links) - 1)
                 <div class="fa fa-angle-right separator"></div>
             @endif  
             <?php $i++ ?>
         @endforeach
     @endif
+
 </div>
 @endsection
 
@@ -76,12 +83,15 @@
 
                 @can('isAdmin')
                     <div class="admin-action-container">
-                        <form action="">   
-                            <button class="btn"> Update </button>
+                    
+                        <form action="" class="mr-2">   
+                            <button class="btn action-update"> Update </button>
                         </form>
+                        
                         <form action="">   
-                            <button clsas="btn"> Delete </button>
+                            <button class="btn action-delete"> Delete </button>
                         </form>
+                        
                     </div>
                 @endcan
 

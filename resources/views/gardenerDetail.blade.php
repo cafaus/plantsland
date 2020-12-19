@@ -5,14 +5,29 @@
 @endsection
 
 @section('content')
-<?php $links = ['Home', 'Gardener', $gardener->name]; ?>
 <div class="custom-breadcrumb">
-    @for ($i = 0; $i < count($links); $i++)
-        <a href="#" class="custom-breadcrumb-item">{{ $links[$i] }}</a>
-        @if ($i < count($links)-1)
-            <div class="fa fa-angle-right separator"></div>
-        @endif
-    @endfor
+    <?php 
+        $i = 0;
+        $links = Request::segments();
+        array_unshift($links, 'Home');
+        $links[count($links)-1] = $gardener->name;
+    ?>
+
+    @if (count($links) > 1)
+        @foreach($links as $segment)
+            <?php 
+                $name = $segment;
+                $href = $i == 0 ? "/" : "/" . $segment; 
+                if ( $i == count($links)-1 ) $href =  '/gardener/' . $gardener->id;
+            ?>
+            <a href="{{$href}}" class="custom-breadcrumb-item">{{$name}}</a>
+            @if ($i < count($links) - 1)
+                <div class="fa fa-angle-right separator"></div>
+            @endif  
+            <?php $i++ ?>
+        @endforeach
+    @endif
+
 </div>
 <div class="custom-container">
     @if ($errors->has('rentDays'))
