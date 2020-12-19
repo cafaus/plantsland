@@ -27,6 +27,8 @@
 }
 .gardener-card .pict-container img {
     width: 100%;
+    height:100%;
+    object-fit:cover;
 }
 .gardener-card .detail-container {
     display: flex;
