@@ -8,8 +8,9 @@
 <div class="custom-container">
 	<div class="container">
 		<div class="title"> Update New Plant </div>
-		<form class="mt-2" action="#" enctype="multipart/form-data" method="post">
-			@csrf
+		<form class="mt-2" action="\plant\{{$plant->id}}" enctype="multipart/form-data" method="post">
+            @csrf
+            @method('PATCH')
 			<div class="img-preview-container" style="display:none;">
                 <img alt="image-preview" id="img-preview" class="img-preview">
             </div>
@@ -204,6 +205,8 @@
                         </div>
                     </div>
                 @endforeach
+                <input type="hidden" value="{{count($plant->plantCares)}}" id="care_count"  name="care_count">
+                
 			</div>
   			<div class="submit-btn-container mb-5"> 
 				<button class="btn" >Update Plant</button>
