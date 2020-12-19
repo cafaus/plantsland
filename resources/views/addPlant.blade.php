@@ -72,9 +72,10 @@
 						   aria-label="With textarea"
                            class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
                            name="description"
-                           value="{{ old('description') }}"
+                           
                            placeholder="Description"
 						   autocomplete="description" autofocus>
+						   {{ old('description')}}
 					</textarea>
 
 					@if ($errors->has('description'))
@@ -94,6 +95,7 @@
                            value="{{ old('origin') }}"
                            placeholder="Origin"
 						   autocomplete="origin" autofocus>
+						   {{ old('origin')}}
 					</textarea>
 
 					@if ($errors->has('origin'))
