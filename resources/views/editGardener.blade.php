@@ -10,7 +10,10 @@
 		<div class="title"> Update Gardener </div>
 		<form class="mt-2" action="/gardener/{{$gardener->id}}" enctype="multipart/form-data" method="post">
             @csrf
-            @method('PATCH')
+			@method('PATCH')
+			@if (session('success'))
+        		<div class="alert alert-success"> {{ session('success') }} </div>
+    		@endif
 			<div class="form-group">
 				<label>Name</label>
 				<input 
