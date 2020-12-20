@@ -66,6 +66,29 @@ class GardenersController extends Controller
         }
         return redirect()->back()->with('success', 'New gardener has been submited!');
     }
+    public function edit(\App\Gardener $gardener){
+        $competences = \App\Competence::all();
+        return view('editGardener', compact('competences','gardener'));
+    }
+    public function update(\App\Gardener $gardener){
+        
+        $data = request()->validate([
+            'competence' => ['required'],
+            'name' => ['required', 'min:5', "unique:gardeners,name,{$gardener->id}"],
+            'like' => ['required', 'integer', "min:1", "max:100"],
+            'experience' => ['required', 'integer', "min:1"],
+            'price' => ['required', 'integer', "min:5000"],
+        ]);
+        
+        $gardener->competence_id = $data['competence'];
+        $gardener->name = $data['name'];
+        $gardener->likes = $data['like'];
+        $gardener->experience = $data['experience'];
+        $gardener->price_per_day = $data['price'];
+        $gardener->save();
+
+        return redirect()->back()->with('success', 'Gardener has been updated!');
+    }
 
     public function destroy(\App\Gardener $gardener){
         if(File::exists(public_path($gardener->image))){

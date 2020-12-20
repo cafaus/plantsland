@@ -8,7 +8,7 @@
 <div class="custom-container">
 	<div class="container">
 		<div class="title"> Update New Plant </div>
-		<form class="mt-2" action="\plant\{{$plant->id}}" enctype="multipart/form-data" method="post">
+		<form class="mt-2" action="/plant/{{$plant->id}}" enctype="multipart/form-data" method="post">
             @csrf
             @method('PATCH')
 			<div class="img-preview-container" style="display:none;">
