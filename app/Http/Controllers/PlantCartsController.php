@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class PlantCartsController extends Controller
 {
     public function index(){
-        $plantCarts = \App\PlantCart::all();
-        $gardenerCarts = \App\GardenerCart::all();
+        $userId = Auth::id();
+        $plantCarts = \App\PlantCart::where('user_id', $userId)->get();
+        $gardenerCarts = \App\GardenerCart::where('user_id', $userId)->get();
         return view('cart',compact('plantCarts', 'gardenerCarts'));
     }
     public function store(\App\Plant $plant){

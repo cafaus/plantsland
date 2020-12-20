@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="{{ asset('css/plantDetail.css') }}">
 @endsection
 
+@section('nav-search')
+<form action="/store" method="GET" class="nav-item search-bar" id="search-form">
+    <input class="search-input" type="text" name="name" placeholder="Search Plants...">
+    <button id="search-icon"><i class="fa fa-search"></i></button>
+</form>
+@endsection
+
 @section('breadcrumb')
 <div class="custom-breadcrumb">
     <?php 
@@ -12,15 +19,22 @@
         array_unshift($links, 'Home');
         $links[count($links)-1] = $plant->name;
     ?>
+
     @if (count($links) > 1)
         @foreach($links as $segment)
-            <a href="{{ $segment }}" class="custom-breadcrumb-item">{{$segment}}</a>
+            <?php 
+                $name = $segment;
+                $href = $i == 0 ? "/" : "/" . $segment; 
+                if ( $i == count($links)-1 ) $href = $segment;
+            ?>
+            <a href="{{$href}}" class="custom-breadcrumb-item">{{$name}}</a>
             @if ($i < count($links) - 1)
                 <div class="fa fa-angle-right separator"></div>
             @endif  
             <?php $i++ ?>
         @endforeach
     @endif
+
 </div>
 @endsection
 
@@ -63,31 +77,58 @@
                     <div class="detail-text">Type</div>
                     <div class="detail-value">{{$plant->plantCategory->name}}</div>
                 </div>
+                <div class="v-line"></div>
+                <div class="plant-stock">
+                    <div class="detail-text">Stock</div>
+                    <div class="detail-value">{{$plant->stock}}</div>
+                </div>
             </div>
+            
+            
             <div class="plant-footer">
                 <div class="price">Rp{{ number_format( $plant->price , 0, ".", ".") }}</div>
-                <form action="/plantCart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
-                    @csrf
-                    <div class="qty-wrapper">
-                        <div class="icon-container" id="minus">
-                            <span class="fa fa-minus"></span>
-                        </div>
+
+                @can('isAdmin')
+                    <div class="admin-action-container">
+                    
+                        <form action="/edit/plant/{{$plant->id}}" class="mr-2">   
+                            <button class="btn action-update"> Update </button>
+                        </form>
                         
-                        <input id="quantity"
-                          type="number"
-                          class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
-                          name="quantity"
-                          value="{{ old('quantity') ?? 1}}"
-                          placeholder=""
-                          autocomplete="quantity" autofocus>
-                         
-                        <div class="icon-container" id="plus">
-                            <span class="fa fa-plus"></span>
-                        </div>
+                        <form action="/plant/{{$plant->id}}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            @method("DELETE")
+                            <button class="btn action-delete"> Delete </button>
+                        </form>
+                        
                     </div>
-                   
-                    <button class="btn" type="submit">Add To Cart</button>
-                </form>
+                @endcan
+
+                @can('isMember')
+                    <form action="/plantCart/{{$plant->id}}" class="add-cart-container" enctype="multipart/form-data" method="post">
+                        @csrf
+                        <div class="qty-wrapper">
+                            <div class="icon-container" id="minus">
+                                <span class="fa fa-minus"></span>
+                            </div>
+                            
+                            <input id="quantity"
+                            type="number"
+                            class="form-control{{ $errors->has('quantity') ? ' is-invalid' : '' }}"
+                            name="quantity"
+                            value="{{ old('quantity') ?? 1}}"
+                            placeholder=""
+                            autocomplete="quantity" autofocus>
+                            
+                            <div class="icon-container" id="plus">
+                                <span class="fa fa-plus"></span>
+                            </div>
+                        </div>
+                    
+                        <button class="btn" type="submit">Add To Cart</button>
+                    </form>
+                @endcan
+
             </div>
         </div>
        

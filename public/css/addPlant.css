@@ -1,0 +1,39 @@
+.img-preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    object-fit: contain;
+}
+.img-preview-container img {
+    width: 100%;
+}
+
+.image-inp-container{
+    margin: 20px 0;
+}
+.is-invalid-select {
+    border-color:red;
+}
+.is-invalid-select-feedback {
+    display:block;
+}
+form .sub-title {
+    font-size: 20px;
+    color:black;
+    font-family:sans-serif;
+    font-weight: 600;
+}
+
+.cares-top-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.submit-btn-container{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+
+}

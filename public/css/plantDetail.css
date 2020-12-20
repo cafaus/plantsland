@@ -207,3 +207,19 @@ input[type=number] {
 .procedure-container .care-desc {
     margin-top: 5px;
 }
+
+.admin-action-container {
+    display: flex;
+}
+.admin-action-container .btn {
+    padding: 5px 10px;
+    border-radius:0px;
+    color:white;
+}
+
+.admin-action-container .action-update {
+    background-color: black;
+}
+.admin-action-container .action-delete {
+    background-color: red;
+}

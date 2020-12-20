@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="{{ asset('css/storeList.css') }}">
 @endsection
 
+@section('nav-search')
+<form action="/store" method="GET" class="nav-item search-bar" id="search-form">
+    <input class="search-input" type="text" name="name" placeholder="Search Plants...">
+    <button id="search-icon"><i class="fa fa-search"></i></button>
+</form>
+@endsection
+
 @section('breadcrumb')
 <div class="custom-breadcrumb">
     <?php 
@@ -11,9 +18,14 @@
         $links = Request::segments();
         array_unshift($links, 'Home');
     ?>
+
     @if (count($links) > 1)
         @foreach($links as $segment)
-            <a href="{{ $segment }}" class="custom-breadcrumb-item">{{$segment}}</a>
+            <?php 
+                $name = $segment;
+                $href = $i == 0 ? "/" : "/" . $segment; 
+            ?>
+            <a href="{{$href}}" class="custom-breadcrumb-item">{{$name}}</a>
             @if ($i < count($links) - 1)
                 <div class="fa fa-angle-right separator"></div>
             @endif  

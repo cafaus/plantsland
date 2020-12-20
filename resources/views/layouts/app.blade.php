@@ -51,13 +51,10 @@
                         <li class="nav-item mr-3">
                             <a class="nav-link" href="/store">Store</a>
                         </li>
-                        <li class="nav-item mr-3">
+                        {{-- <li class="nav-item mr-3">
                             <a class="nav-link" href="#">Forum</a>
-                        </li>
-                        <li class="nav-item search-bar">
-                            <input class="search-input" type="text" placeholder="Search...">
-                            <a href="#" id="search-icon"><i class="fa fa-search"></i></a>
-                        </li>
+                        </li> --}}
+                        @yield('nav-search')
                         <li class="nav-item">
                             <div class="v-line" style="margin: 0 20px;"></div>
                         </li>
@@ -74,10 +71,10 @@
                         @else
                             <li class="nav-item dropdown">
                                 @can('isMember')
-                                <div class="member-btn-container">
-                                    <a class="btn-dark mr-2 pt-1 pb-1 pr-2 pl-2" href="/cart" role="button"> Cart </a>
-                                    <a class="btn-dark mr-2 pt-1 pb-1 pr-2 pl-2"  href="/history" role="button"> History </a>
-                                </div>
+                                    <div class="member-btn-container">
+                                        <a class="btn-dark mr-2 pt-1 pb-1 pr-2 pl-2" href="/cart" role="button"> Cart </a>
+                                        <a class="btn-dark mr-2 pt-1 pb-1 pr-2 pl-2"  href="/history" role="button"> History </a>
+                                    </div>
                                 @endcan
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -85,10 +82,33 @@
                                 
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @can('isAdmin')
+                                        <a class="dropdown-item" href="/add/plant"> 
+                                            <div class="text-icon-container">
+                                                <div class="icon-container">
+                                                    <i class="fa fa-leaf"></i>
+                                                </div>
+                                                <div> Add Plant </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item" href="/add/gardener">
+                                            <div class="text-icon-container">
+                                                <div class="icon-container">
+                                                    <i class="fa fa-users"></i>
+                                                </div>
+                                                <div> Add Gardener </div>
+                                            </div>
+                                        </a>
+                                    @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <div class="text-icon-container">
+                                            <div class="icon-container">
+                                                <i class="fa fa-sign-out-alt"></i>
+                                            </div>
+                                            <div> Logout </div>
+                                        </div>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -111,8 +131,13 @@
             const searchInput = document.getElementsByClassName('search-input')[0];
 
             searchIcon.onclick = function ( e ) { 
-                searchInput.style.width = "100%";
-                searchInput.style.opacity = 1;
+                e.preventDefault();
+                if ( searchInput.style.width == "100%" ) {
+                    document.getElementById('search-form').submit();
+                } else {
+                    searchInput.style.width = "100%";
+                    searchInput.style.opacity = 1;
+                }
                 e.stopPropagation();
             }
             document.onclick = function ( e ) { 

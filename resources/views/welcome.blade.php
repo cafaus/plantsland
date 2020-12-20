@@ -13,10 +13,10 @@
     </div>
 </div>
 <div class="custom-container pt-4 pb-5">
-    <div class="title mb-3">Top Sales Plants</div>
+    <div class="title mb-3">Types of Plant</div>
     <div class="d-flex flex-wrap justify-content-center">
         @foreach( $plants as $plant )
-            <a href="/store/{{$plant->id}}" class="plant-card shadow m-2">
+            <a href="/store?category={{$plant->plantCategory->name}}" class="plant-card shadow m-2">
                 <div class="plant-image">
                     <img src="{{ asset($plant->image) }}" alt="plant" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
                 </div>

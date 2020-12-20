@@ -18,6 +18,7 @@ Route::get('/', 'PlantsController@welcome');
 Route::get('/gardener', "GardenersController@index");
 Route::get('/store', "PlantsController@index");
 Route::get('/store/{plant}', "PlantsController@show");
+
 Route::get('/gardener/{gardener}', "GardenersController@show");
 
 // harus login
@@ -42,6 +43,25 @@ Route::middleware(['auth'])->group( function () {
     });
     //role admin
     Route::middleware(['role:admin'])->group( function(){
+        
+
+        Route::get('/add/plant',  'PlantsController@create');
+        Route::post('/add/plant',  'PlantsController@store');
+
+        Route::get('/edit/plant/{plant}',  'PlantsController@edit');
+        Route::patch('/plant/{plant}', 'PlantsController@update');
+
+        Route::delete('/plant/{plant}', 'PlantsController@destroy');
+
+        Route::get('/add/gardener',  'GardenersController@create');
+        Route::post('/add/gardener',  'GardenersController@store');
+
+        Route::get('/edit/gardener/{gardener}',  'GardenersController@edit');
+        Route::patch('/gardener/{gardener}', 'GardenersController@update');
+
+        Route::delete('/gardener/{gardener}', 'GardenersController@destroy');
+
+       
         
     });
 } );
