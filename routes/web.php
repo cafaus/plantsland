@@ -50,18 +50,19 @@ Route::middleware(['auth'])->group( function () {
 
         Route::get('/edit/plant/{plant}',  'PlantsController@edit');
         Route::patch('/plant/{plant}', 'PlantsController@update');
+
         Route::delete('/plant/{plant}', 'PlantsController@destroy');
 
         Route::get('/add/gardener',  'GardenersController@create');
         Route::post('/add/gardener',  'GardenersController@store');
+
+        Route::get('/edit/gardener/{gardener}',  'GardenersController@edit');
+        Route::patch('/gardener/{gardener}', 'GardenersController@update');
+
         Route::delete('/gardener/{gardener}', 'GardenersController@destroy');
 
-        Route::get('/update/gardener',  function () {
-            return view('updateGardener');
-        });
-        Route::get('/update/plant',  function () {
-            return view('updatePlant');
-        });
+       
+        
     });
 } );
 

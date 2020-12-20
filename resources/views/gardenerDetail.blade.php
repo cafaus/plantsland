@@ -68,7 +68,7 @@
         @can('isAdmin')
             <div class="d-flex">
                 <div class="mr-2">   
-                    <a href="/update/gardener" class="btn action-update"> Update </a>
+                    <a href="/edit/gardener/{{$gardener->id}}" class="btn action-update"> Update </a>
                 </div>
                         
                 <form action="/gardener/{{$gardener->id}}" enctype="multipart/form-data" method="post">

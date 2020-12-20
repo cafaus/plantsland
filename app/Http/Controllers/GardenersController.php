@@ -66,6 +66,13 @@ class GardenersController extends Controller
         }
         return redirect()->back()->with('success', 'New gardener has been submited!');
     }
+    public function edit(\App\Gardener $gardener){
+        $competences = \App\Competence::all();
+        return view('editGardener', compact('competences','gardener'));
+    }
+    public function update(\App\Gardener $gardener){
+        dd("in development..");
+    }
 
     public function destroy(\App\Gardener $gardener){
         if(File::exists(public_path($gardener->image))){
