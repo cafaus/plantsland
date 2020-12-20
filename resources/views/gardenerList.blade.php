@@ -70,6 +70,10 @@
                 <div class="top">{{$gardener->likes}}%</div>
                 <div class="bottom">Likes</div>
             </div>
+            <div class="center">
+                <div class="top">{{$gardener->competence->name}}</div>
+                <div class="bottom">Competence</div>
+            </div>
             <div class="right">
                 <div class="top">{{$gardener->experience}} Years</div>
                 <div class="bottom">Experience</div>
