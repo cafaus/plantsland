@@ -315,3 +315,42 @@ html, body {
     height: 35px;
     margin-right: 10px;
 }
+/* END OF TEXT ICON CONTAINER STYLES */
+
+/* PAGINATION STYLES */
+.pagination-container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin: 20px 0;
+}
+
+.pagination > li > a {
+    color:white;
+    background-color: black;
+}
+
+.pagination .page-item .page-link{
+    background-color: #1c1c1c ;
+    color:white;
+}
+
+.pagination > .page-item .page-link:focus,
+.pagination > .page-item .page-link:hover,
+.pagination > .page-item > span:focus,
+.pagination > .page-item > span:hover
+{
+    background-color: #404040;
+    cursor:pointer;
+}
+
+.pagination > .active .page-link {
+    background-color: grey;
+    border: solid 1px grey;
+    cursor:default !important;
+    color:white;
+}
+.pagination > .active .page-link:hover {
+    background-color: grey ;
+}
+/* END OF PAGINATION STYLES */

@@ -84,4 +84,7 @@
         </a>  
     @endforeach
 </div>
+<div class="pagination-container">
+    {{ $plants->links() }}
+</div>
 @endsection

@@ -12,12 +12,12 @@ class PlantsController extends Controller
         $params = $req->query();
         $plants = [];
         if ( $req->has('name') ) {
-            $plants = Plant::where('name', 'like' , '%' . $params['name'] . '%')->get();
+            $plants = Plant::where('name', 'like' , '%' . $params['name'] . '%')->paginate(8);
         } else if ( $req->has('category') ) {
             $category = PlantCategory::where('name' , '=' ,$params['category'])->first();
-            $plants = !$category ? [] : Plant::where('plant_category_id' , '=' , $category->id)->get();
+            $plants = !$category ? [] : Plant::where('plant_category_id' , '=' , $category->id)->paginate(8);
         } else {
-            $plants = Plant::all();
+            $plants = Plant::paginate(8);
         }
         return view('storeList', compact('plants'));
     }

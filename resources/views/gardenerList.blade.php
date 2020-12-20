@@ -57,6 +57,11 @@
 @endsection
 
 @section('filter-content')
+
+<div class="pagination-container" style="justify-content:flex-end;">
+    {{ $gardeners->links() }}
+</div>
+
 @foreach ($gardeners as $gardener)
 <a class="gardener-card shadow" href="/gardener/{{$gardener->id}}">
     <div class="pict-container">
