@@ -11,7 +11,7 @@ class GardenerCartsController extends Controller
             'rentDays' => ['required', 'integer', 'min:1']
         ]);
         
-        $existingCart = \App\GardenerCart::where('gardener_id', $gardener->id)->first();
+        $existingCart = \App\GardenerCart::where('gardener_id', $gardener->id)->where('user_id',Auth::id())->first();
         if($existingCart){
             $totalNeeded = $existingCart->rent_days + $data['rentDays'];
             $existingCart->rent_days += $data['rentDays'];
