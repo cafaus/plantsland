@@ -19,7 +19,7 @@ class PlantCartsController extends Controller
         ]);
         
         if($plant->stock < $data['quantity']){
-            return redirect()->back()->with('alert', 'Stock is not enough!! (must be below {$plant->stock})');
+            return redirect()->back()->with('alert', "Stock is not enough!! (must be below {$plant->stock})");
         }
         
         $existingCart = \App\PlantCart::where('plant_id', $plant->id)->first();

@@ -53,17 +53,15 @@ class PlantOriginSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'description' => "Manilkara zapota , commonly known as Sapodilla. Sapodilla can grow to more than 30 m (98 ft) tall with an average trunk diameter of 1.5 m (4.9 ft). 
-                The average height of cultivated specimens, however, is usually between 9 and 15 m (30 and 49 ft) with a trunk diameter not exceeding 50 cm (20 in). [4] It is wind-resistant and the bark is rich in a white, gummy latex called chicle. 
-                The ornamental leaves are medium green and glossy. They are alternate, elliptic to ovate, 7–15 cm (2.8–5.9 in) long, with an entire margin. The white flowersare inconspicuous and bell-like, with a six-lobed corolla. 
-                An unripe fruit has a firm outer skin and when picked, releases white chicle from its stem. A fully ripened fruit has saggy skin and does not release chicle when picked",
+                'description' => "The Sansevieria is originally from western Africa, from Nigeria to the Congo, and belongs to the Succulent family. Nowadays the Sansevieria is mainly imported from Costa Rica, Guatemala, Thailand and China.
+                Sanseveria comes in many shapes and sizes and has developed a completely unique style because of its modern shapes.",
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'description' => "Triphasia trifolia is a species of Triphasia in the family Rutaceae , native to tropical southeastern Asia in Malaysia , the Philippines and possibly elsewhere. It is a spiny evergreen shrub (rarely a small tree ) growing to 3 m tall. 
-                The leaves are trifoliate, glossy dark green, each leaflet 2–4 cm long and 1.5–2 cm broad. The flowers are white, with three petals 10–13 mm long and 4 mm broad. The fruit is a red, edible hesperidium 10–15 mm in diameter, similar to a small Citrus fruit. 
-                The fruit flesh is pulpy, with a flavor reminiscent of a slightly sweet lime.",
+                'description' => "The Sansevieria originates from western Africa, from Nigeria to Congo, and belongs to the Succulent family. Today, the Sansevieria is mainly imported from Costa Rica, Guatemala, Thailand and China.
+
+                Sanseveria comes in many shapes and sizes and has developed a completely individual style through its modern forms.",
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],

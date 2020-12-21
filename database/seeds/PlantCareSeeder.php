@@ -152,6 +152,62 @@ class PlantCareSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
+            [
+                'plant_id' => 7,
+                'care_title' => 'Temperature',
+                'description' => 'It is recommended to give the Sansevieria a temperature between 15 and 28 degrees Celsius during the day and between 12 and 20 degrees Celsius at night.',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'plant_id' => 7,
+                'care_title' => 'Watering',
+                'description' => 'It is very important to know that you can only give the plant the wrong water if you give too much water. So when in doubt, never water the plant. The soil should be well dried when the plant is watered again. If this does not happen, there is a chance that root rot will occur and the plant may die.',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'plant_id' => 7,
+                'care_title' => 'Pruning',
+                'description' => 'The Sansevieria cannot be pruned. This will stop the growth. Fortunately, it is not really necessary as the plant will not grow taller than 1.5 meters.',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'plant_id' => 7,
+                'care_title' => 'Repotting',
+                'description' => 'The Sansevieria really only needs to be repotted when the roots are pushing against the pot. This will only be the case after 3 years. Always use a new pot that is at least 20% larger than the previous pot. ',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'plant_id' => 8,
+                'care_title' => 'Temperature',
+                'description' => 'It is recommended to give the Sansevieria a temperature between 15 and 28 degrees Celsius during the day and between 12 and 20 degrees Celsius at night.',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'plant_id' => 8,
+                'care_title' => 'Watering',
+                'description' => 'It is very important to know that you can only give the plant the wrong water if you give too much water. So when in doubt, never water the plant. The soil should be well dried when the plant is watered again. If this does not happen, there is a chance that root rot will occur and the plant may die.',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'plant_id' => 8,
+                'care_title' => 'Pruning',
+                'description' => 'The Sansevieria cannot be pruned. This will stop the growth. Fortunately, it is not really necessary as the plant will not grow taller than 1.5 meters.',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'plant_id' => 8,
+                'care_title' => 'Repotting',
+                'description' => 'The Sansevieria really only needs to be repotted when the roots are pushing against the pot. This will only be the case after 3 years. Always use a new pot that is at least 20% larger than the previous pot. ',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ]);
     }
 }
