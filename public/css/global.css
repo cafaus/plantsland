@@ -326,31 +326,27 @@ html, body {
 }
 
 .pagination > li > a {
-    color:white;
-    background-color: black;
+    color:black;
+    background-color: green;
 }
 
 .pagination .page-item .page-link{
-    background-color: #1c1c1c ;
-    color:white;
+    background-color: white ;
+    color:black;
 }
 
 .pagination > .page-item .page-link:focus,
 .pagination > .page-item .page-link:hover,
 .pagination > .page-item > span:focus,
-.pagination > .page-item > span:hover
-{
-    background-color: #404040;
+.pagination > .page-item > span:hover,
+.pagination > .active .page-link:hover {
+    background-color: lightgreen;
     cursor:pointer;
 }
-
 .pagination > .active .page-link {
-    background-color: grey;
-    border: solid 1px grey;
+    background-color: green;
+    border: solid 1px green;
     cursor:default !important;
     color:white;
-}
-.pagination > .active .page-link:hover {
-    background-color: grey ;
 }
 /* END OF PAGINATION STYLES */
