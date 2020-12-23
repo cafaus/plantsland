@@ -12,9 +12,9 @@ class GardenersController extends Controller
         $params = $req->query();
         $gardeners = [];
         if ( $req->has('name') ) {
-            $gardeners = Gardener::where('name', 'like' , '%' . $params['name'] . '%')->get();
+            $gardeners = Gardener::where('name', 'like' , '%' . $params['name'] . '%')->paginate(4);
         } else {
-            $gardeners = Gardener::all();
+            $gardeners = Gardener::paginate(4);
         }
         return view('gardenerList', compact('gardeners'));
     }

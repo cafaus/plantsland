@@ -150,12 +150,13 @@
 	const loadFile = function(event) {
 		const reader = new FileReader();
 		const imgContainer = document.getElementsByClassName('img-preview-container')[0];
-		imgContainer.style.display = 'none';
+		
 
 		reader.onload = function() {
 			var output = document.getElementById('img-preview');
 			output.src = reader.result;
 		};
+        imgContainer.style.display = 'block';
 		reader.readAsDataURL(event.target.files[0]);
 	};
 

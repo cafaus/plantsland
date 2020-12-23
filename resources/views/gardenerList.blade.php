@@ -5,7 +5,7 @@
 @endsection
 
 @section('nav-search')
-<form action="/store" method="GET" class="nav-item search-bar" id="search-form">
+<form action="/gardener" method="GET" class="nav-item search-bar" id="search-form">
     <input class="search-input" type="text" name="name" placeholder="Search Gardener Name...">
     <button id="search-icon"><i class="fa fa-search"></i></button>
 </form>
@@ -57,33 +57,44 @@
 @endsection
 
 @section('filter-content')
-@foreach ($gardeners as $gardener)
-<a class="gardener-card shadow" href="/gardener/{{$gardener->id}}">
-    <div class="pict-container">
-        <img src="{{ asset($gardener->image) }}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/people.png') }}';">
-    </div>
-    <div class="detail-container">
-        <div class="name line-clamp-1">{{$gardener->name}}</div>
-        <div class="h-line"></div>
-        <div class="detail">
-            <div class="left">
-                <div class="top">{{$gardener->likes}}%</div>
-                <div class="bottom">Likes</div>
-            </div>
-            <div class="center">
-                <div class="top">{{$gardener->competence->name}}</div>
-                <div class="bottom">Competence</div>
-            </div>
-            <div class="right">
-                <div class="top">{{$gardener->experience}} Years</div>
-                <div class="bottom">Experience</div>
-            </div>
+
+@if (!count($gardeners))
+    <div class="title" style="text-align:center;">There is no available Gardener</div>
+@else
+   
+    @foreach ($gardeners as $gardener)
+    <a class="gardener-card shadow" href="/gardener/{{$gardener->id}}">
+        <div class="pict-container">
+            <img src="{{ asset($gardener->image) }}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/people.png') }}';">
         </div>
-        <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
+        <div class="detail-container">
+            <div class="name line-clamp-1">{{$gardener->name}}</div>
+            <div class="h-line"></div>
+            <div class="detail">
+                <div class="left">
+                    <div class="top">{{$gardener->likes}}%</div>
+                    <div class="bottom">Likes</div>
+                </div>
+                <div class="center">
+                    <div class="top">{{$gardener->competence->name}}</div>
+                    <div class="bottom">Competence</div>
+                </div>
+                <div class="right">
+                    <div class="top">{{$gardener->experience}} Years</div>
+                    <div class="bottom">Experience</div>
+                </div>
+            </div>
+            <div class="price">Rp {{ number_format( $gardener->price_per_day , 0, ".", ".") }}/Day</div>
+        </div>
+        <div class="portfolio-container">
+            <img src="{{ asset($gardener->gardenerPortofolios[0]->image) }}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
+        </div>
+    </a>
+    @endforeach
+    <div class="pagination-container">
+        {{ $gardeners->links() }}
     </div>
-    <div class="portfolio-container">
-        <img src="{{ asset($gardener->gardenerPortofolios[0]->image) }}" alt="portfolio" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.jpg') }}';">
-    </div>
-</a>
-@endforeach
+
+@endif
+
 @endsection
